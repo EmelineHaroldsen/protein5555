@@ -1,1 +1,11 @@
-# Need to push
+# Create a protein constructor
+protein5555 <- function(sequence){
+  stopifnot(is.character(sequence))
+  structure(sequence, class = "protein5555")
+}
+
+# Create a protein list constructor
+protein5555_list <- function(proteins){
+  stopifnot(is.list(proteins))
+  structure(proteins, class = "protein5555_list")
+}
