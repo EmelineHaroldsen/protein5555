@@ -32,11 +32,13 @@ options(repos = "https://cloud.r-project.org")
 To use the `protein5555` package, you'll need to install it from GitHub using the `devtools` package. Follow these steps:
 
 ```{r}
-# Install devtools package (if not already installed)
+# Install devtools and bio3d package (if not already installed)
 install.packages("devtools")
+install.packages("bio3d")
 
-# Load devtools library
+# Load devtools and bio3d library
 library(devtools)
+library(bio3d)
 
 # Install the protein5555 package from GitHub
 devtools::install_github("EmelineHaroldsen/protein5555")
