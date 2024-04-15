@@ -19,22 +19,22 @@ cleanser <- function(pdb_location){
 
 
 # Filter POL to find chain A
-huo <- huo1$seqres
-filt_huo <- huo[names(huo) == "A"]
+huos <- huo1$seqres
+huo <- huos[names(huo) == "A"]
 
-sl0 <- sl01$seqres
-filt_sl0 <- sl0[names(sl0) == "A"]
+sl0s <- sl01$seqres
+sl0 <- sl0s[names(sl0) == "A"]
 
-bqr <- bqr1$seqres
-filt_bqr <- bqr[names(bqr) == "A"]
+bqrs <- bqr1$seqres
+bqr <- bqrs[names(bqr) == "A"]
 
 #filter Kinase
-fpu <- fpu1$seqres
-filt_fpu <- fpu[names(fpu) == "A"]
+fpus <- fpu1$seqres
+fpu <- fpus[names(fpu) == "A"]
 
 qgy <- qgy1$seqres
-filt_qgy <- qgy[names(qgy) == "A"]
+qgy <- qgys[names(qgy) == "A"]
 
 r7g <- r7g1$seqres
-filt_r7g <- r7g[names(r7g) == "A"]
+r7g <- r7gs[names(r7g) == "A"]
 
