@@ -1,9 +1,26 @@
 #' @export
-plot.protein5555 <- function(x, ...) {
-   barplot(table(x))
+plot.protein5555 <- function(x, y, kind = "aminoDis", ...) {
+   if (kind == "aminoDis"){
+     plotSeq(x)
+   }else if (kind == "charge"){
+     plotCharge(x)
+   }else if (kind == "polar"){
+     plotPolar(x)
+   }
 }
 
-plotSeq <- function(x){
+#' @export
+plot.protein5555_list <- function(x, y, kind = "aminoDis", ...){
+  if (kind == "aminoDis"){
+    plotSeq(x)
+  }else if (kind == "charge"){
+    plotCharge(x)
+  }else if (kind == "polar"){
+    plotPolar(x)
+  }
+}
+
+plotSeq <- function(x, ...){
   my_palette <- c("#ff5050","#527dff", "#ffa852", "#ffd452", "#ffff52","#d4ff52",
                   "#7dff52", "#52ff7d", "#52ff7d", "#52ffa8", "#52ffff", "#52d4ff",
                   "#52a8ff","#ff7d52", "#7d52ff", "#d452ff","#a852ff","#ff52ff",
@@ -22,13 +39,12 @@ plotSeq <- function(x){
       df$family <- c(f)
       alldf <- rbind(alldf, df)
     }
-    palette <-
     p <- ggplot(alldf, aes(x=AminoAcid, y=Frequency, fill=family)) +
       geom_bar(stat="identity", width=0.5, position = "dodge")
     p + scale_fill_manual(values=my_palette)
   }else{
     data <- as.data.frame(table(x))
-    names(data) <- c("AminoAcid", "Frequency")
+    names(data) <- c("AminoAcid", "Count")
     p <- ggplot(data, aes(x=AminoAcid, y=Frequency, fill=AminoAcid)) +
       geom_bar(stat="identity", width=0.5)
     p + scale_fill_manual(values=my_palette)
@@ -38,6 +54,121 @@ plotSeq <- function(x){
 unique_families <- function(x){
   char <- unlist(lapply(x, function(y){attr(y, "family")}))
   return(unique(char))
+}
+
+count_label_occurrences <- function(data_frame, column_name, label) {
+  # Check if the column exists in the data frame
+  if (!(column_name %in% colnames(data_frame))) {
+    stop("Column does not exist in the data frame.")
+  }
+
+  # Count occurrences of the label in the specified column
+  occurrences <- sum(data_frame[[column_name]] == label, na.rm = TRUE)
+
+  return(occurrences)
+}
+
+
+plotCharge <- function(x, ...){
+  my_palette <- c("#ff5050","#527dff", "#7d52ff")
+
+  if (is.list(x)){
+    # Get all the unique families
+    fams <- unique_families(x)
+
+    # Create a new dataframe for all of them.
+    alldf <- data.frame()
+
+    # loop through all the families
+    for (f in fams){
+      # Get the proteins that are in the family.
+      loc <- which(sapply(x, function(y) f %in% attr(y, "family")))
+      pos <- 0
+      neg <- 0
+      total <- 0
+      for (l in loc){
+        df <- classify(unlist(x[l]))
+        pos <- pos + count_label_occurrences(df, "type", "positive")
+        neg <- neg + count_label_occurrences(df, "type", "negative")
+        total <- total + length(df$protein)
+      }
+      tog <- (pos + neg) / total
+      pos <- (pos) / total
+      neg <- (neg) / total
+      charge <- c("positive", "negative", "total")
+      charge_freq <- c(pos, neg, tog)
+      df <- data.frame(charge = charge, charge_freq = charge_freq)
+      df$family <- c(f)
+      alldf <- rbind(alldf, df)
+    }
+    p <- ggplot(alldf, aes(x=charge, y=charge_freq, fill=family)) +
+      geom_bar(stat="identity", width=0.5, position = "dodge")
+    p + scale_fill_manual(values=my_palette)
+  } else{
+    df <- classify(x)
+    pos <- count_label_occurrences(df, "type", "positive")
+    neg <- count_label_occurrences(df, "type", "negative")
+    len <- length(df)
+    charge_count <- c(pos, neg, pos + neg)
+    charge <- c("positive", "negative", "total")
+    new_df <- data.frame(charge = charge, charge_count = charge_count)
+    p <- ggplot(new_df, aes(x=charge, y=charge_count, fill=charge)) +
+      geom_bar(stat="identity", width=0.5)
+    p + scale_fill_manual(values=my_palette)
+  }
+}
+
+plotPolar <- function(x, ...){
+  my_palette <- c("#ff5050","#527dff", "#7d52ff")
+
+  if (is.list(x)){
+    # Get all the unique families
+    fams <- unique_families(x)
+
+    # Create a new dataframe for all of them.
+    alldf <- data.frame()
+
+    # loop through all the families
+    for (f in fams){
+      # Get the proteins that are in the family.
+      loc <- which(sapply(x, function(y) f %in% attr(y, "family")))
+      polar <- 0
+      nonpolar <- 0
+      other <- 0
+      total <- 0
+      for (l in loc){
+        df <- classify(unlist(x[l]))
+        polar <- polar + count_label_occurrences(df, "type", "polar") + count_label_occurrences(df, "type", "negative") + count_label_occurrences(df, "type", "positive")
+        nonpolar <- nonpolar + count_label_occurrences(df, "type", "nonpolar")
+        other <- other + count_label_occurrences(df, "type", "other")
+        total <- total + length(df$protein)
+      }
+      polar <- polar / total
+      nonpolar <- nonpolar / total
+      other <- other / total
+      polarity <- c("polar", "nonpolar", "other")
+      pol_freq <- c(polar, nonpolar, other)
+      df <- data.frame(polarity = polarity, pol_freq = pol_freq)
+      df$family <- c(f)
+      alldf <- rbind(alldf, df)
+    }
+    p <- ggplot(alldf, aes(x=polarity, y=pol_freq, fill=family)) +
+      geom_bar(stat="identity", width=0.5, position = "dodge")
+    p + scale_fill_manual(values=my_palette)
+  } else{
+    df <- classify(x)
+    pos <- count_label_occurrences(df, "type", "positive")
+    neg <- count_label_occurrences(df, "type", "negative")
+    polar <- count_label_occurrences(df, "type", "polar")
+    nonpolar <- count_label_occurrences(df, "type", "nonpolar")
+    other <- count_label_occurrences(df, "type", "other")
+    count <- c(pos + neg + polar, nonpolar, other)
+    polarity <- c("polar", "nonpolar", "other")
+    new_df <- data.frame(polarity = polarity, count = count)
+    p <- ggplot(new_df, aes(x=polarity, y=count, fill=polarity)) +
+      geom_bar(stat="identity", width=0.5)
+    p + scale_fill_manual(values=my_palette)
+  }
 }
 
 #https://www.w3schools.com/colors/colors_picker.asp
