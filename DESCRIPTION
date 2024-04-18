@@ -3,8 +3,8 @@ Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
     person("Abby Funk", email = "abby.funk@usu.edu", role = "aut");
-    person("Emeline Haroldsen", email = "emeline@example.com", role = c("aut", "cre"));
-    person("Rebecca Higbee", email = "rebecca@example.com", role = "aut")
+    person("Emeline Haroldsen", email = "emeline.haroldsen@usu.edu", role = c("aut", "cre"));
+    person("Rebecca Higbee", email = "A02313797@usu.edu", role = "aut")
 Description: What the package does (one paragraph).
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
