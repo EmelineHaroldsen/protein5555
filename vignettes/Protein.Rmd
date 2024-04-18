@@ -1,5 +1,5 @@
 ---
-title: "Protein"
+title: "Protein Classification"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Protein}
@@ -54,7 +54,7 @@ library(protein5555)
 
 In this section, we'll demonstrate how to use the `protein5555` package to analyze protein structures and perform comparative analyses.
 
-# Example Data
+## Example Data
 
 In this section, we'll use example datasets to demonstrate the functionality of the `protein5555` package.
 
@@ -73,19 +73,24 @@ To load the example datasets into your R environment, you can use the following 
 data("dna_pol_data")
 data("kinase_data")
 ```
-# Summary statistics
+## Classifying proteins into families
+```r
+class(data)
+```
+
+## Summary statistics
 ```r
 summary(dna_pol_data)
 summary(kinase_data)
 ```
 
-# Plot amino acid proportions
+## Plot amino acid proportions
 ```r
 plot(dna_pol_data)
 plot(kinase_data)
 ```
 
-# Compare sequence lengths between DNA polymerases and kinases
+## Compare sequence lengths between DNA polymerases and kinases
 ```r
 plot(dna_pol_data, kinase_data)
 ```
