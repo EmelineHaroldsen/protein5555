@@ -2,8 +2,8 @@ Package: protein5555
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
-    person("Emeline Haroldsen", email = "emeline.haroldsen@usu.edu", role = "aut", "cre", "maintainer");
-    person("Abby Funk", email = "abby.funk@usu.edu", role = c("aut"));
+    person(given = "Emeline", family = "Haroldsen", email = "emeline.haroldsen@usu.edu", role = c("aut", "cre", "maintainer"));
+    person("Abby Funk", email = "abby.funk@usu.edu", role = "aut");
     person("Rebecca Higbee", email = "rebecca.higbee@usu.edu", role = "aut");
 Description: What the package does (one paragraph).
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
