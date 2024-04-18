@@ -1,3 +1,9 @@
+#' Plot protein information
+#'
+#' Ability to plot
+#' @param x protein5555 object
+#' @param y another parameter
+#' @param kind "aminoDis", "charge", "polar"
 #' @export
 plot.protein5555 <- function(x, y, kind = "aminoDis", ...) {
    if (kind == "aminoDis"){
@@ -45,7 +51,7 @@ plotSeq <- function(x, ...){
   }else{
     data <- as.data.frame(table(x))
     names(data) <- c("AminoAcid", "Count")
-    p <- ggplot(data, aes(x=AminoAcid, y=Frequency, fill=AminoAcid)) +
+    p <- ggplot(data, aes(x=AminoAcid, y=Count, fill=AminoAcid)) +
       geom_bar(stat="identity", width=0.5)
     p + scale_fill_manual(values=my_palette)
   }
@@ -169,6 +175,30 @@ plotPolar <- function(x, ...){
       geom_bar(stat="identity", width=0.5)
     p + scale_fill_manual(values=my_palette)
   }
+}
+
+plotLength <- function(x, ...){
+  # Get all the unique families
+  fams <- unique_families(x)
+
+  # Create a new dataframe for all of them.
+  alldf <- data.frame()
+
+  # loop through all the families
+  for (f in fams){
+    # Get the proteins that are in the family.
+    loc <- which(sapply(x, function(y) f %in% attr(y, "family")))
+    seq <- c()
+    for (l in loc){
+      seq_length <- length(unlist(x[l]))
+      seq <- c(seq, seq_length)
+    }
+    df <- data.frame(seq_len = seq)
+    df$family <- c(f)
+    alldf <- rbind(alldf, df)
+  }
+  p <- ggplot(alldf, aes(x=seq_len, y=family)) + geom_boxplot()
+  p #+ #scale_fill_manual(values=my_palette)
 }
 
 #https://www.w3schools.com/colors/colors_picker.asp
