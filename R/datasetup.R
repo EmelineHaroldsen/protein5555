@@ -1,4 +1,4 @@
-#only run once, already been done
+#DO NOT RUN, only run once, already been done
 save(huo, file = "data/clean_huo.RData")
 save(fpu, file = "data/clean_fpu.RData")
 save(qgy, file = "data/clean_qgy.RData")
