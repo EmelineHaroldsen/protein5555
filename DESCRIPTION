@@ -1,7 +1,7 @@
 Package: protein5555
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R: c(
     person("Abby", "Funk", email = "abby.funk@usu.edu", role = "aut"),
     person("Emeline", "Haroldsen", email = "emeline.haroldsen@usu.edu", role = "cre"),
     person("Rebecca", "Higbee", email = "A02313797@usu.edu", role = "aut"))
