@@ -2,7 +2,7 @@ classify <- function(data) {
   positive <- c("LYS", "ARG", "HIS")
   negative <- c("ASP", "GLU")
   polar <- c("SER", "THR", "ASN", "GLN", "TYR", "CYS")
-  nonpolar <- c("ALA", "VAL", "LEU", "ILE", "MET", "PHE", "TRP")
+  nonpolar <- c("ALA", "VAL", "LEU", "ILE", "MET", "PHE", "TRP", "PRO", "GLY")
 
   # Create a vector to store labels
   labels <- character(length(data))
@@ -25,4 +25,15 @@ classify <- function(data) {
 
   # Create a data frame with amino acid sequence and labels
   protein_df <- data.frame(protein = data, type = labels)
+  obs <- protein_df |>
+    dplyr::group_by(type) |>
+    dplyr::summarize(
+      count = dplyr::n()
+    ) |>
+    dplyr::mutate(
+      proportion = count / sum(count)
+    )
+
+return(obs)
 }
+
