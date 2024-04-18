@@ -73,10 +73,12 @@ To load the example datasets into your R environment, you can use the following 
 data("dna_pol_data")
 data("kinase_data")
 ```
-# Summary statistics for DNA polymerase data
+# Summary statistics
 summary(dna_pol_data)
+summary(kinase_data)
 
-# Plot amino acid proportions for kinases
+# Plot amino acid proportions
+plot(dna_pol_data)
 plot(kinase_data)
 
 # Compare sequence lengths between DNA polymerases and kinases
