@@ -64,15 +64,24 @@ We'll provide two example datasets:
 1. `dna_pol_data`: Structural data from DNA polymerases obtained from the PolBase database.
 2. `kinase_data`: Structural data from kinases obtained from the KLIFS database.
 
-## Loading Example Data
+## Load example datasets
+data("clean_bqr")
+data("clean_fpu")
+data("clean_huo")
+data("clean_qgy")
+data("clean_r7g")
+data("clean_sl0")
 
-To load the example datasets into your R environment, you can use the following commands:
+a <- protein5555(bqr, "pol")
+b <- protein5555(fpu, "kin")
+d <- protein5555(huo, "pol")
+e <- protein5555(qgy, "kin")
+f <- protein5555(r7g, "pol")
+g <- protein5555(sl0, "pol")
 
-```r
-# Load example datasets
-data("dna_pol_data")
-data("kinase_data")
-```
+kinPol <- protein5555_list(list(a, b, d, e, f, g))
+
+
 ## Classifying proteins into families
 ```r
 class(data)
