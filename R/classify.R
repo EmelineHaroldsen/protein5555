@@ -25,6 +25,7 @@ classify <- function(data) {
 
   # Create a data frame with amino acid sequence and labels
   protein_df <- data.frame(protein = data, type = labels)
+<<<<<<< Updated upstream
   obs <- protein_df |>
     dplyr::group_by(type) |>
     dplyr::summarize(
@@ -35,5 +36,8 @@ classify <- function(data) {
     )
 
 return(obs)
+=======
+  return(protein_df)
+>>>>>>> Stashed changes
 }
 
