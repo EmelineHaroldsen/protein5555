@@ -74,16 +74,21 @@ data("dna_pol_data")
 data("kinase_data")
 ```
 # Summary statistics
+```r
 summary(dna_pol_data)
 summary(kinase_data)
+```
 
 # Plot amino acid proportions
+```r
 plot(dna_pol_data)
 plot(kinase_data)
+```
 
 # Compare sequence lengths between DNA polymerases and kinases
+```r
 plot(dna_pol_data, kinase_data)
-
+```
 
 # References
 
