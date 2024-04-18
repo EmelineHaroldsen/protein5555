@@ -77,10 +77,10 @@ data("kinase_data")
 summary(dna_pol_data)
 
 # Plot amino acid proportions for kinases
-plot_aa_proportions(kinase_data)
+plot(kinase_data)
 
 # Compare sequence lengths between DNA polymerases and kinases
-compare_sequence_lengths(dna_pol_data, kinase_data)
+plot(dna_pol_data, kinase_data)
 
 
 # References
