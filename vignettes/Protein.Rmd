@@ -95,8 +95,6 @@ plot(kinase_data)
 plot(dna_pol_data, kinase_data)
 ```
 
-# References
-
 # Conclusion
 
 That wraps up our tour of the `protein5555` package! We've seen how it can turn complex protein structure data from PolBase and KLIFS into insights about DNA polymerases and kinases.
