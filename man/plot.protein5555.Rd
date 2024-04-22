@@ -12,6 +12,8 @@
 \item{y}{another parameter}
 
 \item{kind}{"aminoDis", "charge", "polar"}
+
+\item{...}{other arguments that are generic to plot function}
 }
 \description{
 Ability to plot

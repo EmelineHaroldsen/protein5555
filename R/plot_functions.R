@@ -4,6 +4,7 @@
 #' @param x protein5555 object
 #' @param y another parameter
 #' @param kind "aminoDis", "charge", "polar"
+#' @param ... other arguments that are generic to plot function
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom ggplot2 ggplot
 #' @export
