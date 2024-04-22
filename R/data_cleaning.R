@@ -1,13 +1,13 @@
 #clean code here
 library(bio3d)
 library(tidyverse)
-huo1 <- read.pdb("data/Pol/1huo.pdb")
-sl01 <- read.pdb("data/Pol/1sl0.pdb")
-bqr1 <- read.pdb("data/Pol/2bqr.pdb")
+huo1 <- read.pdb("data-raw/Pol/1huo.pdb")
+sl01 <- read.pdb("data-raw/Pol/1sl0.pdb")
+bqr1 <- read.pdb("data-raw/Pol/2bqr.pdb")
 
-fpu1 <- read.pdb("data/Kinase/1fpu.pdb")
-qgy1 <- read.pdb("data/Kinase/8qgy.pdb")
-r7g1 <- read.pdb("data/Kinase/8r7g.pdb")
+fpu1 <- read.pdb("data-raw/Kinase/1fpu.pdb")
+qgy1 <- read.pdb("data-raw/Kinase/8qgy.pdb")
+r7g1 <- read.pdb("data-raw/Kinase/8r7g.pdb")
 
 #overall generic function
 cleanser <- function(pdb_location){

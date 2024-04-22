@@ -5,11 +5,5 @@
 .DS_Store
 .quarto
 inst/doc
-data-raw/Kinase/1fpu.pdb
-data-raw/Kinase/8qgy.pdb
-data-raw/Kinase/8r7g.pdb
-data-raw/Pol/1huo.pdb
-data-raw/Pol/1sl0.pdb
-data-raw/Pol/2bqr.pdb
-
+data-raw/
 
