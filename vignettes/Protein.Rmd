@@ -33,12 +33,13 @@ To use the `protein5555` package, you'll need to install it from GitHub using th
 
 ```{r}
 # Install devtools and bio3d package (if not already installed)
-install.packages("devtools")
-install.packages("bio3d")
+#install.packages("devtools")
+#install.packages("bio3d")
 
 # Load devtools and bio3d library
 library(devtools)
 library(bio3d)
+library(ggplot2)
 
 # Install the protein5555 package from GitHub
 devtools::install_github("EmelineHaroldsen/protein5555")
@@ -65,6 +66,7 @@ We'll provide two example datasets:
 2. `kinase_data`: Structural data from kinases obtained from the KLIFS database.
 
 ## Load example datasets
+```{r}
 data("clean_bqr")
 data("clean_fpu")
 data("clean_huo")
@@ -80,7 +82,7 @@ f <- protein5555(r7g, "pol")
 g <- protein5555(sl0, "pol")
 
 kinPol <- protein5555_list(list(a, b, d, e, f, g))
-
+```
 
 ## Classifying proteins into families
 ```r
@@ -89,19 +91,18 @@ class(data)
 
 ## Summary statistics
 ```r
-summary(dna_pol_data)
-summary(kinase_data)
+summary(kinPol)
 ```
 
 ## Plot amino acid proportions
-```r
-plot(dna_pol_data)
-plot(kinase_data)
+```{r}
+plot(kinPol)
+plot(a)
 ```
 
 ## Compare sequence lengths between DNA polymerases and kinases
-```r
-plot(dna_pol_data, kinase_data)
+```{r}
+plot(kinPol, kind = "length")
 ```
 
 # Conclusion

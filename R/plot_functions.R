@@ -12,6 +12,8 @@ plot.protein5555 <- function(x, y, kind = "aminoDis", ...) {
      plotCharge(x)
    }else if (kind == "polar"){
      plotPolar(x)
+   } else if (kind == "length"){
+     plotLength()
    }
 }
 
@@ -23,6 +25,8 @@ plot.protein5555_list <- function(x, y, kind = "aminoDis", ...){
     plotCharge(x)
   }else if (kind == "polar"){
     plotPolar(x)
+  }else if (kind == "length"){
+    plotLength(x)
   }
 }
 
