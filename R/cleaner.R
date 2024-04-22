@@ -17,10 +17,10 @@ cleaner <- function(pdb_location) {
   df <- data.frame(name = names(filtered), value = as.character(filtered))
 
   # Filter for A and B separately
-  counts <- df %>%
-    dplyr::filter(name %in% c("A", "B")) %>%
-    dplyr::group_by(name) %>%
-    dplyr::summarize(count = n())
+  counts <- df |>
+    dplyr::filter(name %in% c("A", "B")) |>
+    dplyr::group_by(name) |>
+    dplyr::summarize(count = dplyr::n())
 
   # Check if counts for both A and B exist
   if (nrow(counts) == 2) {
@@ -29,9 +29,6 @@ cleaner <- function(pdb_location) {
 
     # Get the filtered sequence for the chosen class
     filt_seq <- filtered[df$name == class]
-
-    # Store the longer string without printing it
-    invisible(assign("longer_string", filt_seq, envir = .GlobalEnv))
 
     # Return the class
     return(class)

@@ -24,8 +24,6 @@ Challenges may arise in parsing complex PDB files, but we'll address them using 
 The `protein555` package has package dependencies on `bio3d`, `devtools` and `ggplot2`. These should be installed if not downloaded prior. To use the `protein5555` package, you'll need to install it from GitHub using the `devtools` package. Follow these steps:
 
 ```{r, warning=FALSE, echo = FALSE}
-library(devtools)
-library(bio3d)
 library(ggplot2)
 # Install the protein5555 package from GitHub
 devtools::install_github("EmelineHaroldsen/protein5555")
@@ -76,10 +74,18 @@ class(data)
 ```
 ## Using Own Protein Data PDB File
 Alternatively, if you have your own dataset, there are functions in this package that support. You can call `cleanser` and input the pdb file location and it will pull out the sequence of proteins that is the longest and can be analyzed.
+```{r, eval=TRUE, echo=FALSE}
+# Load the here package
+library(here)
+
+# Construct the file path to your PDB file using here()
+pdb_file <- here::here("data", "Pol", "1huo.pdb")
+```
+
 ```{r}
-cleaner("data/Pol/1huo.pdb")
-protein5555(cleaner("data/Pol/1huo.pdb"), "pol")
-summary(protein5555(cleaner("data/Pol/1huo.pdb"), "pol"))
+cleaner(pdb_file)
+protein5555(cleaner(pdb_file), "pol")
+summary(protein5555(cleaner(pdb_file), "pol"))
 ```
 
 ## Summary statistics
