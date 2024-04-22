@@ -8,7 +8,7 @@
 #' @examples
 #' data(huo)
 #' head(huo)
-"huo" <- readRDS("data/clean_huo.RData")
+"huo" <- load("data/clean_huo.RData")
 
 #' Cleaned version of the "fpu" dataset
 #'
@@ -20,7 +20,7 @@
 #' @examples
 #' data(fpu)
 #' head(fpu)
-"fpu" <- readRDS("data/clean_fpu.RData")
+"fpu" <- load("data/clean_fpu.RData")
 
 #' Cleaned version of the "bqr" dataset
 #'
@@ -32,7 +32,7 @@
 #' @examples
 #' data(bqr)
 #' head(bqr)
-"bqr" <- readRDS("data/clean_bqr.RData")
+"bqr" <- load("data/clean_bqr.RData")
 
 #' Cleaned version of the "qgy" dataset
 #'
@@ -44,7 +44,7 @@
 #' @examples
 #' data(gqy)
 #' head(qgy)
-"qgy" <- readRDS("data/clean_qgy.RData")
+"qgy" <- load("data/clean_qgy.RData")
 
 
 #' Cleaned version of the "r7g" dataset
@@ -57,7 +57,7 @@
 #' @examples
 #' data(r7g)
 #' head(r7g)
-"r7g" <- readRDS("data/clean_r7g.RData")
+"r7g" <- load("data/clean_r7g.RData")
 
 #' Cleaned version of the "sl0" dataset
 #'
@@ -69,5 +69,5 @@
 #' @examples
 #' data(sl0)
 #' head(sl0)
-"sl0" <- readRDS("data/clean_sl0.RData")
+"sl0" <- load("data/clean_sl0.RData")
 
