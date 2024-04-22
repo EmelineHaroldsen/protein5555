@@ -4,6 +4,8 @@
 #' @param x protein5555 object
 #' @param y another parameter
 #' @param kind "aminoDis", "charge", "polar"
+#' @importFrom RColorBrewer brewer.pal
+#' @importFrom ggplot2 ggplot
 #' @export
 plot.protein5555 <- function(x, y, kind = "aminoDis", ...) {
    if (kind == "aminoDis"){
@@ -29,7 +31,7 @@ plot.protein5555_list <- function(x, y, kind = "aminoDis", ...){
     plotLength(x)
   }
 }
-
+#' @importFrom stats family
 plotSeq <- function(x, ...){
   my_palette <- c("#ff5050","#527dff", "#ffa852", "#ffd452", "#ffff52","#d4ff52",
                   "#7dff52", "#52ff7d", "#52ff7d", "#52ffa8", "#52ffff", "#52d4ff",
