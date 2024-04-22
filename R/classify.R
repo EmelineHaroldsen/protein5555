@@ -1,3 +1,8 @@
+#' Classifies String of Protein into Families
+#'
+#' @param data Input cleansed protein sequence
+#' @return protein data frame of labels of the family type
+#' @export
 classify <- function(data) {
   positive <- c("LYS", "ARG", "HIS")
   negative <- c("ASP", "GLU")

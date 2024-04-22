@@ -70,16 +70,13 @@ kinPol <- protein5555_list(list(a, b, d, e, f, g))
 
 ## Classifying proteins into families
 ```{r}
-class(data)
+class(a)
+class(kinPol)
 ```
 ## Using Own Protein Data PDB File
 Alternatively, if you have your own dataset, there are functions in this package that support. You can call `cleanser` and input the pdb file location and it will pull out the sequence of proteins that is the longest and can be analyzed.
-```{r, eval=TRUE, echo=FALSE}
-# Load the here package
-library(here)
-
-# Construct the file path to your PDB file using here()
-pdb_file <- here::here("data", "Pol", "1huo.pdb")
+```{r, eval=TRUE, echo=FALSE, warning = FALSE}
+invisible(pdb_file <- here::here("data", "Pol", "1huo.pdb"))
 ```
 
 ```{r}
