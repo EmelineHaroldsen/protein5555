@@ -74,6 +74,11 @@ kinPol <- protein5555_list(list(a, b, d, e, f, g))
 ```{r}
 class(data)
 ```
+## Using Own Protein Data PDB File
+Alternatively, if you have your own dataset, there are functions in this package that support. You can call `cleanser` and input the pdb file location and it will pull out the sequence of proteins that is the longest and can be analyzed.
+```{r}
+classify()
+```
 
 ## Summary statistics
 ```{r}
