@@ -21,26 +21,12 @@ In our analysis, we'll gather structural data from PolBase and KLIFS databases, 
 Challenges may arise in parsing complex PDB files, but we'll address them using filtering techniques and substring searches. Our analysis offers educational value, providing people with insights into protein structure-function relationships and empowering them to explore and compare protein structures using our R package.
 
 # Installation
+The `protein555` package has package dependencies on `bio3d`, `devtools` and `ggplot2`. These should be installed if not downloaded prior. To use the `protein5555` package, you'll need to install it from GitHub using the `devtools` package. Follow these steps:
 
-Before installing the `protein5555` package, it's important to set a CRAN mirror. You can do this by executing the following code:
-
-```{r}
-# Set CRAN mirror
-options(repos = "https://cloud.r-project.org")
-```
-
-To use the `protein5555` package, you'll need to install it from GitHub using the `devtools` package. Follow these steps:
-
-```{r}
-# Install devtools and bio3d package (if not already installed)
-#install.packages("devtools")
-#install.packages("bio3d")
-
-# Load devtools and bio3d library
+```{r, warning=FALSE, echo = FALSE}
 library(devtools)
 library(bio3d)
 library(ggplot2)
-
 # Install the protein5555 package from GitHub
 devtools::install_github("EmelineHaroldsen/protein5555")
 ```
@@ -57,7 +43,7 @@ In this section, we'll demonstrate how to use the `protein5555` package to analy
 
 ## Example Data
 
-In this section, we'll use example datasets to demonstrate the functionality of the `protein5555` package.
+In this section, we'll use example datasets built into this package to demonstrate the functionality of the `protein5555` package. 
 
 ## Description of Datasets
 
@@ -85,12 +71,12 @@ kinPol <- protein5555_list(list(a, b, d, e, f, g))
 ```
 
 ## Classifying proteins into families
-```r
+```{r}
 class(data)
 ```
 
 ## Summary statistics
-```r
+```{r}
 summary(kinPol)
 ```
 
