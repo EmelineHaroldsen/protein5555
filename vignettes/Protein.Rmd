@@ -57,26 +57,26 @@ e <- protein5555(qgy, "kin")
 f <- protein5555(r7g, "pol")
 g <- protein5555(sl0, "pol")
 
-kinPol <- protein5555_list(list(a, b, d, e, f, g))
+kin_pol <- protein5555_list(list(a, b, d, e, f, g))
 ```
 
 ## Classifying proteins into families
 Below, we can check the class of the individual data as a `protein5555` or the list of the individual proteins as a list. 
 ```{r}
 class(a)
-class(kinPol)
+class(kin_pol)
 ```
 
 ## Summary statistics
 There is a built in summary statistic of the function that is compatitble with the `protein5555_list` class.  
 ```{r}
-summary(kinPol)
+summary(kin_pol)
 ```
 
 ## Plot amino acid proportions
 There are several plotting functions. Below, we show plotting the respective protein families, polymerase and kinase and the frequencies that are seen from the combined 6 datasets in this package. The number of the various amino acids are also plotted. 
 ```{r}
-plot(kinPol)
+plot(kin_pol)
 plot(a)
 ```
 
