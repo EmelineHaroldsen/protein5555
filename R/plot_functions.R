@@ -58,8 +58,8 @@ plot_seq <- function(x, ...) {
       alldf <- rbind(alldf, df)
     }
     p <- ggplot2::ggplot(alldf, ggplot2::aes(
-      x = AminoAcid,
-      y = Frequency, fill = family
+      x = "AminoAcid",
+      y = "Frequency", fill = "family"
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5, position = "dodge")
     p + ggplot2::scale_fill_manual(values = my_palette)
@@ -67,13 +67,15 @@ plot_seq <- function(x, ...) {
     data <- as.data.frame(table(x))
     names(data) <- c("AminoAcid", "Count")
     p <- ggplot2::ggplot(data, ggplot2::aes(
-      x = AminoAcid,
-      y = Count, fill = AminoAcid
+      x = "AminoAcid",
+      y = "Count", fill = "AminoAcid"
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5)
     p + ggplot2::scale_fill_manual(values = my_palette)
   }
 }
+
+
 
 unique_families <- function(x) {
   char <- unlist(lapply(x, function(y) {
@@ -136,7 +138,6 @@ plot_charge <- function(x, ...) {
     df <- classify(x)
     pos <- count_label_occurrences(df, "type", "positive")
     neg <- count_label_occurrences(df, "type", "negative")
-    len <- length(df)
     charge_count <- c(pos, neg, pos + neg)
     charge <- c("positive", "negative", "total")
     new_df <- data.frame(charge = charge, charge_count = charge_count)
@@ -240,4 +241,5 @@ plot_length <- function(x, ...) {
 # https://www.w3schools.com/colors/colors_picker.asp
 # https://r-graph-gallery.com/42-colors-names.html
 # https://r-graph-gallery.com/ggplot2-color.html
-# http://www.sthda.com/english/wiki/ggplot2-barplots-quick-start-guide-r-software-and-data-visualization
+# http://www.sthda.com/english/wiki/ggplot2-barplots-
+#   quick-start-guide-r-software-and-data-visualization
