@@ -1,3 +1,10 @@
+#' Classifies Proteins
+#'
+#' Takes a vector and will characterize each amino acid with a charge or
+#'     polarity
+#' @param data Input protein string of amino acids
+#' @return returns data frame with amino acid and its classification
+#' @export
 classify <- function(data) {
   positive <- c("LYS", "ARG", "HIS")
   negative <- c("ASP", "GLU")

@@ -1,5 +1,7 @@
 #' Cleans pdb file of proteins
 #'
+#' Requires the location of pdb file to be known for file to run
+#'
 #' @param pdb_location Input location of pdb file on local device
 #' @return returns string that is longer of A or B protein sequence
 #' @export
