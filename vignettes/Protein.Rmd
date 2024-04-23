@@ -22,7 +22,7 @@ In our analysis, we'll gather structural data from PolBase and KLIFS databases, 
 Challenges may arise in parsing complex PDB files, but we'll address them using filtering techniques and substring searches. Our analysis offers educational value, providing people with insights into protein structure-function relationships and empowering them to explore and compare protein structures using our R package.
 
 # Installation
-The `protein555` package has package dependencies on `bio3d`, `devtools` and `ggplot2`. These should be installed if not downloaded prior. To use the `protein5555` package, you'll need to install it from GitHub using the `devtools` package.
+The `protein555` package has package dependencies on `bio3d`, `devtools` and `ggplot2`. These should be installed if not downloaded prior. To use the `protein5555` package, you'll need to install it from GitHub using the `devtools` package. This can be done by following this link to the GitHub repository: https://github.com/EmelineHaroldsen/protein5555.git
 
 Once installed, you can load the protein5555 package in your R session using the following command:
 
