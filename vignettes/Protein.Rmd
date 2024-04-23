@@ -30,13 +30,9 @@ Once installed, you can load the protein5555 package in your R session using the
 library(protein5555)
 ```
 
-# Usage
+# Usage with Example Data
 
-In this section, we'll demonstrate how to use the `protein5555` package to analyze protein structures and perform comparative analyses.
-
-## Example Data
-
-In this section, we'll use example datasets built into this package to demonstrate the functionality of the `protein5555` package. 
+In this section, we'll demonstrate how to use the `protein5555` package to analyze protein structures and perform comparative analyses. We will show this using the built in datasets in this package, however using your own PDB file is compatible with this package. 
 
 ## Description of Datasets
 
@@ -45,6 +41,7 @@ We'll provide two example datasets:
 2. `kinase_data`: Structural data from kinases obtained from the KLIFS database.
 
 ## Load example datasets
+Below, we have loaded the RData files from this package and called a constructor to assign the `protein5555_list` class to the data. 
 ```{r}
 data("clean_bqr")
 data("clean_fpu")
@@ -64,26 +61,33 @@ kinPol <- protein5555_list(list(a, b, d, e, f, g))
 ```
 
 ## Classifying proteins into families
+Below, we can check the class of the individual data as a `protein5555` or the list of the individual proteins as a list. 
 ```{r}
 class(a)
 class(kinPol)
 ```
 
 ## Summary statistics
+There is a built in summary statistic of the function that is compatitble with the `protein5555_list` class.  
 ```{r}
 summary(kinPol)
 ```
 
 ## Plot amino acid proportions
+There are several plotting functions. Below, we show plotting the respective protein families, polymerase and kinase and the frequencies that are seen from the combined 6 datasets in this package. The number of the various amino acids are also plotted. 
 ```{r}
 plot(kinPol)
 plot(a)
 ```
 
 ## Compare sequence lengths between DNA polymerases and kinases
+This plotting function, where the kind is chosen from "charge", "length" or "polar", we see the total sequence length from the two various protein families. 
 ```{r}
 plot(kinPol, kind = "length")
 ```
+
+# Using Data to Clean & Classify
+There are functions built into the `protein5555` package tha allow for a pbd file to be entered and the longest protein string to be selected. There are typically two strings, labeled A or B, and the `cleaner` function will return which string was selected while storing the longer protein sequence. The classify sequence allows for the various 20 amino acids to be classified with polarity and the type of charge. 
 
 # Conclusion
 
