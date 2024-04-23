@@ -33,11 +33,15 @@ plot.protein5555_list <- function(x, y, kind = "aminoDis", ...){
   }
 }
 #' @importFrom stats family
+#' @import ggplot2
+#' @import ggplot2
+
 plotSeq <- function(x, ...){
   my_palette <- c("#ff5050","#527dff", "#ffa852", "#ffd452", "#ffff52","#d4ff52",
                   "#7dff52", "#52ff7d", "#52ff7d", "#52ffa8", "#52ffff", "#52d4ff",
                   "#52a8ff","#ff7d52", "#7d52ff", "#d452ff","#a852ff","#ff52ff",
                   "#ff52d4","#ff52a8", "#ff5252")
+
   if (is.list(x)){
     fams <- unique_families(x)
     alldf <- data.frame()
@@ -52,15 +56,15 @@ plotSeq <- function(x, ...){
       df$family <- c(f)
       alldf <- rbind(alldf, df)
     }
-    p <- ggplot(alldf, aes(x=AminoAcid, y=Frequency, fill=family)) +
-      geom_bar(stat="identity", width=0.5, position = "dodge")
-    p + scale_fill_manual(values=my_palette)
-  }else{
+    p <- ggplot2::ggplot(alldf, aes(x=AminoAcid, y=Frequency, fill=family)) +
+      ggplot2::geom_bar(stat="identity", width=0.5, position = "dodge")
+    p + ggplot2::scale_fill_manual(values=my_palette)
+  } else {
     data <- as.data.frame(table(x))
     names(data) <- c("AminoAcid", "Count")
-    p <- ggplot(data, aes(x=AminoAcid, y=Count, fill=AminoAcid)) +
-      geom_bar(stat="identity", width=0.5)
-    p + scale_fill_manual(values=my_palette)
+    p <- ggplot2::ggplot(data, aes(x=AminoAcid, y=Count, fill=AminoAcid)) +
+      ggplot2::geom_bar(stat="identity", width=0.5)
+    p + ggplot2::scale_fill_manual(values=my_palette)
   }
 }
 
@@ -80,8 +84,7 @@ count_label_occurrences <- function(data_frame, column_name, label) {
 
   return(occurrences)
 }
-
-
+#' @import ggplot2
 plotCharge <- function(x, ...) {
   my_palette <- c("#ff5050","#527dff", "#7d52ff")
 
@@ -114,7 +117,7 @@ plotCharge <- function(x, ...) {
       df$family <- c(f)
       alldf <- rbind(alldf, df)
     }
-    p <- ggplot2::ggplot(alldf, aes(x=charge, y=charge_freq, fill=family)) +
+    p <- ggplot2::ggplot(alldf, ggplot2::aes(x=charge, y=charge_freq, fill=family)) +
       ggplot2::geom_bar(stat="identity", width=0.5, position = "dodge")
     p + ggplot2::scale_fill_manual(values=my_palette)
   } else {
@@ -125,12 +128,13 @@ plotCharge <- function(x, ...) {
     charge_count <- c(pos, neg, pos + neg)
     charge <- c("positive", "negative", "total")
     new_df <- data.frame(charge = charge, charge_count = charge_count)
-    p <- ggplot2::ggplot(new_df, aes(x=charge, y=charge_count, fill=charge)) +
+    p <- ggplot2::ggplot(new_df, ggplot2::aes(x=charge, y=charge_count, fill=charge)) +
       ggplot2::geom_bar(stat="identity", width=0.5)
     p + ggplot2::scale_fill_manual(values=my_palette)
   }
 }
 
+#' @import ggplot2
 plotPolar <- function(x, ...){
   my_palette <- c("#ff5050","#527dff", "#7d52ff")
 
@@ -183,7 +187,7 @@ plotPolar <- function(x, ...){
     p + scale_fill_manual(values=my_palette)
   }
 }
-
+#' @import ggplot2
 plotLength <- function(x, ...){
   # Get all the unique families
   fams <- unique_families(x)

@@ -13,8 +13,18 @@ cleaner <- function(pdb_location) {
   # Filter sequences of length 3
   filtered <- seq[nchar(seq) == 3]
 
+  # Check if there are any filtered sequences
+  if (length(filtered) == 0) {
+    return("No sequences of length 3 found.")
+  }
+
   # Create a data frame with the names and values
   df <- data.frame(name = names(filtered), value = as.character(filtered))
+
+  # Check if there are any names
+  if (is.null(df$name)) {
+    return("No names found.")
+  }
 
   # Filter for A and B separately
   counts <- df |>
