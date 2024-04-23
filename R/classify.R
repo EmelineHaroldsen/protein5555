@@ -1,8 +1,3 @@
-#' Classifies String of Protein into Families
-#'
-#' @param data Input cleansed protein sequence
-#' @return protein data frame of labels of the family type
-#' @export
 classify <- function(data) {
   positive <- c("LYS", "ARG", "HIS")
   negative <- c("ASP", "GLU")
@@ -30,15 +25,7 @@ classify <- function(data) {
 
   # Create a data frame with amino acid sequence and labels
   protein_df <- data.frame(protein = data, type = labels)
-  obs <- protein_df |>
-    dplyr::group_by(type) |>
-    dplyr::summarize(
-      count = dplyr::n()
-    ) |>
-    dplyr::mutate(
-      proportion = count / sum(count)
-    )
 
+  # Return the original protein data frame
   return(protein_df)
 }
-

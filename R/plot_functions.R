@@ -82,7 +82,7 @@ count_label_occurrences <- function(data_frame, column_name, label) {
 }
 
 
-plotCharge <- function(x, ...){
+plotCharge <- function(x, ...) {
   my_palette <- c("#ff5050","#527dff", "#7d52ff")
 
   if (is.list(x)){
@@ -114,10 +114,10 @@ plotCharge <- function(x, ...){
       df$family <- c(f)
       alldf <- rbind(alldf, df)
     }
-    p <- ggplot(alldf, aes(x=charge, y=charge_freq, fill=family)) +
-      geom_bar(stat="identity", width=0.5, position = "dodge")
-    p + scale_fill_manual(values=my_palette)
-  } else{
+    p <- ggplot2::ggplot(alldf, aes(x=charge, y=charge_freq, fill=family)) +
+      ggplot2::geom_bar(stat="identity", width=0.5, position = "dodge")
+    p + ggplot2::scale_fill_manual(values=my_palette)
+  } else {
     df <- classify(x)
     pos <- count_label_occurrences(df, "type", "positive")
     neg <- count_label_occurrences(df, "type", "negative")
@@ -125,9 +125,9 @@ plotCharge <- function(x, ...){
     charge_count <- c(pos, neg, pos + neg)
     charge <- c("positive", "negative", "total")
     new_df <- data.frame(charge = charge, charge_count = charge_count)
-    p <- ggplot(new_df, aes(x=charge, y=charge_count, fill=charge)) +
-      geom_bar(stat="identity", width=0.5)
-    p + scale_fill_manual(values=my_palette)
+    p <- ggplot2::ggplot(new_df, aes(x=charge, y=charge_count, fill=charge)) +
+      ggplot2::geom_bar(stat="identity", width=0.5)
+    p + ggplot2::scale_fill_manual(values=my_palette)
   }
 }
 

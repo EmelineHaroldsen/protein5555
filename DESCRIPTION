@@ -19,7 +19,5 @@ Imports:
     ggplot2,
     RColorBrewer, 
     dplyr,
-    bio3d, 
-    devtools,
-    here
+    bio3d
 
