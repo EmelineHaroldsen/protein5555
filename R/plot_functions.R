@@ -10,33 +10,32 @@
 #' @export
 plot.protein5555 <- function(x, y, kind = "aminoDis", ...) {
   if (kind == "aminoDis") {
-    plotSeq(x)
+    plot_seq(x)
   } else if (kind == "charge") {
-    plotCharge(x)
+    plot_charge(x)
   } else if (kind == "polar") {
-    plotPolar(x)
+    plot_polar(x)
   } else if (kind == "length") {
-    plotLength()
+    plot_length()
   }
 }
 
 #' @export
 plot.protein5555_list <- function(x, y, kind = "aminoDis", ...) {
   if (kind == "aminoDis") {
-    plotSeq(x)
+    plot_seq(x)
   } else if (kind == "charge") {
-    plotCharge(x)
+    plot_charge(x)
   } else if (kind == "polar") {
-    plotPolar(x)
+    plot_polar(x)
   } else if (kind == "length") {
-    plotLength(x)
+    plot_length(x)
   }
 }
 #' @importFrom stats family
 #' @import ggplot2
 #' @import ggplot2
-
-plotSeq <- function(x, ...) {
+plot_seq <- function(x, ...) {
   my_palette <- c(
     "#ff5050", "#527dff", "#ffa852", "#ffd452", "#ffff52", "#d4ff52",
     "#7dff52", "#52ff7d", "#52ff7d", "#52ffa8", "#52ffff", "#52d4ff",
@@ -58,13 +57,19 @@ plotSeq <- function(x, ...) {
       df$family <- c(f)
       alldf <- rbind(alldf, df)
     }
-    p <- ggplot2::ggplot(alldf, aes(x = AminoAcid, y = Frequency, fill = family)) +
+    p <- ggplot2::ggplot(alldf, ggplot2::aes(
+      x = AminoAcid,
+      y = Frequency, fill = family
+    )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5, position = "dodge")
     p + ggplot2::scale_fill_manual(values = my_palette)
   } else {
     data <- as.data.frame(table(x))
     names(data) <- c("AminoAcid", "Count")
-    p <- ggplot2::ggplot(data, aes(x = AminoAcid, y = Count, fill = AminoAcid)) +
+    p <- ggplot2::ggplot(data, ggplot2::aes(
+      x = AminoAcid,
+      y = Count, fill = AminoAcid
+    )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5)
     p + ggplot2::scale_fill_manual(values = my_palette)
   }
@@ -89,7 +94,7 @@ count_label_occurrences <- function(data_frame, column_name, label) {
   return(occurrences)
 }
 #' @import ggplot2
-plotCharge <- function(x, ...) {
+plot_charge <- function(x, ...) {
   my_palette <- c("#ff5050", "#527dff", "#7d52ff")
 
   if (is.list(x)) {
@@ -121,7 +126,10 @@ plotCharge <- function(x, ...) {
       df$family <- c(f)
       alldf <- rbind(alldf, df)
     }
-    p <- ggplot2::ggplot(alldf, ggplot2::aes(x = charge, y = charge_freq, fill = family)) +
+    p <- ggplot2::ggplot(alldf, ggplot2::aes(
+      x = charge,
+      y = charge_freq, fill = family
+    )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5, position = "dodge")
     p + ggplot2::scale_fill_manual(values = my_palette)
   } else {
@@ -132,14 +140,18 @@ plotCharge <- function(x, ...) {
     charge_count <- c(pos, neg, pos + neg)
     charge <- c("positive", "negative", "total")
     new_df <- data.frame(charge = charge, charge_count = charge_count)
-    p <- ggplot2::ggplot(new_df, ggplot2::aes(x = charge, y = charge_count, fill = charge)) +
+    p <- ggplot2::ggplot(new_df, ggplot2::aes(
+      x = charge,
+      y = charge_count,
+      fill = charge
+    )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5)
     p + ggplot2::scale_fill_manual(values = my_palette)
   }
 }
 
 #' @import ggplot2
-plotPolar <- function(x, ...) {
+plot_polar <- function(x, ...) {
   my_palette <- c("#ff5050", "#527dff", "#7d52ff")
 
   if (is.list(x)) {
@@ -159,7 +171,9 @@ plotPolar <- function(x, ...) {
       total <- 0
       for (l in loc) {
         df <- classify(unlist(x[l]))
-        polar <- polar + count_label_occurrences(df, "type", "polar") + count_label_occurrences(df, "type", "negative") + count_label_occurrences(df, "type", "positive")
+        polar <- polar + count_label_occurrences(df, "type", "polar") +
+          count_label_occurrences(df, "type", "negative") +
+          count_label_occurrences(df, "type", "positive")
         nonpolar <- nonpolar + count_label_occurrences(df, "type", "nonpolar")
         other <- other + count_label_occurrences(df, "type", "other")
         total <- total + length(df$protein)
@@ -173,9 +187,12 @@ plotPolar <- function(x, ...) {
       df$family <- c(f)
       alldf <- rbind(alldf, df)
     }
-    p <- ggplot(alldf, aes(x = polarity, y = pol_freq, fill = family)) +
-      geom_bar(stat = "identity", width = 0.5, position = "dodge")
-    p + scale_fill_manual(values = my_palette)
+    p <- ggplot2::ggplot(alldf,  ggplot2::aes(
+      x = polarity,
+      y = pol_freq, fill = family
+    )) +
+      ggplot2::geom_bar(stat = "identity", width = 0.5, position = "dodge")
+    p + ggplot2::scale_fill_manual(values = my_palette)
   } else {
     df <- classify(x)
     pos <- count_label_occurrences(df, "type", "positive")
@@ -186,13 +203,16 @@ plotPolar <- function(x, ...) {
     count <- c(pos + neg + polar, nonpolar, other)
     polarity <- c("polar", "nonpolar", "other")
     new_df <- data.frame(polarity = polarity, count = count)
-    p <- ggplot(new_df, aes(x = polarity, y = count, fill = polarity)) +
-      geom_bar(stat = "identity", width = 0.5)
-    p + scale_fill_manual(values = my_palette)
+    p <- ggplot2::ggplot(
+      new_df,
+      ggplot2::aes(x = polarity, y = count, fill = polarity)
+    ) +
+      ggplot2::geom_bar(stat = "identity", width = 0.5)
+    p + ggplot2::scale_fill_manual(values = my_palette)
   }
 }
 #' @import ggplot2
-plotLength <- function(x, ...) {
+plot_length <- function(x, ...) {
   # Get all the unique families
   fams <- unique_families(x)
 
@@ -212,9 +232,9 @@ plotLength <- function(x, ...) {
     df$family <- c(f)
     alldf <- rbind(alldf, df)
   }
-  p <- ggplot(alldf, aes(x = seq_len, y = family)) +
-    geom_boxplot()
-  p #+ #scale_fill_manual(values=my_palette)
+  p <- ggplot2::ggplot(alldf, ggplot2::aes(x = seq_len, y = family)) +
+    ggplot2::geom_boxplot()
+  p #+ # ggplot2::scale_fill_manual(values=my_palette)
 }
 
 # https://www.w3schools.com/colors/colors_picker.asp

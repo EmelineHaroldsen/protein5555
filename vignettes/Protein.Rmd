@@ -83,7 +83,7 @@ plot(a)
 ## Compare sequence lengths between DNA polymerases and kinases
 This plotting function, where the kind is chosen from "charge", "length" or "polar", we see the total sequence length from the two various protein families. 
 ```{r}
-plot(kinPol, kind = "length")
+plot(kin_pol, kind = "length")
 ```
 
 # Using Data to Clean & Classify
