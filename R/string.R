@@ -1,4 +1,4 @@
-string <- function(seqres){
+string <- function(seqres) {
   filtered <- seqres[nchar(seqres) == 3]
   # Create a data frame with the names and values
   df <- data.frame(name = names(filtered), value = as.character(filtered))
@@ -15,4 +15,3 @@ string <- function(seqres){
     return("B")
   }
 }
-

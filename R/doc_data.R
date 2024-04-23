@@ -70,4 +70,3 @@
 #' data(sl0)
 #' head(sl0)
 "sl0" <- load("data/clean_sl0.RData")
-

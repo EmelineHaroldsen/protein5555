@@ -1,5 +1,5 @@
 #' @export
-summary.protein5555 <- function(object, ...){
+summary.protein5555 <- function(object, ...) {
   len <- length(object)
   df <- classify(object)
   pos <- count_label_occurrences(df, "type", "positive")
@@ -15,21 +15,21 @@ summary.protein5555 <- function(object, ...){
 }
 
 #' @export
-summary.protein5555_list <- function(object, ...){
+summary.protein5555_list <- function(object, ...) {
   uFam <- unique_families(object)
   print("Families: ")
   print(uFam)
   get_full_count(object, uFam)
 }
 
-get_full_count <- function(object, uFam){
+get_full_count <- function(object, uFam) {
   prot <- 0
   pos <- 0
   neg <- 0
   polar <- 0
   nonPol <- 0
   total <- 0
-  for (l in 1:length(object)){
+  for (l in 1:length(object)) {
     prot <- prot + 1
     df <- classify(unlist(object[l]))
     pos <- pos + count_label_occurrences(df, "type", "positive")
