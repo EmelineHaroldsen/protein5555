@@ -36,6 +36,9 @@ In this section, we'll demonstrate how to use the `protein5555` package to analy
 
 ## Description of Datasets
 
+The `protein5555` package has 6 built-in datasets (bqr, fpu, huo, qgy, r7g, and sl0). Each dataset contains a protein sequence.
+Three of the protein sequences came from the PolBase database and are representative of a fraction of polymerase sequences.
+The remaining three protein sequences came from the KLIFS database and are representative of a fraction of 
 We'll provide two example datasets:
 1. `dna_pol_data`: Structural data from DNA polymerases obtained from the PolBase database.
 2. `kinase_data`: Structural data from kinases obtained from the KLIFS database.
