@@ -94,11 +94,3 @@ There are functions built into the `protein5555` package tha allow for a pbd fil
 That wraps up our tour of the `protein5555` package! We've seen how it can turn complex protein structure data from PolBase and KLIFS into insights about DNA polymerases and kinases.
 
 From classifying proteins into families to comparing their structures and analyzing amino acid proportions, this package makes it easy to dive into protein structure-function relationships. And don't worry about those tricky PDB files - we've got you covered with filtering techniques and substring searches.
-
-But it's not just about getting results; it's about learning too. By exploring and comparing protein structures, you can deepen your understanding of molecular biology concepts and maybe even uncover something new!
-
-Looking ahead, we've got big plans for `protein5555`. More databases, better visualizations, and maybe even some machine learning magic - the sky's the limit!
-
-So go ahead, give `protein5555` a spin, and let us know what you think. Your feedback and ideas are what make this package tick. Head over to our GitHub repository to get started, and join the community of protein structure enthusiasts!
-
-Thanks for joining us on this adventure, and happy exploring!
