@@ -21,17 +21,17 @@ cleaner <- function(pdb_location) {
   }
 
   # Create a data frame with the names and values
-  df <- data.frame(name = names(filtered), value = as.character(filtered))
+  df <- data.frame(string = names(filtered), value = as.character(filtered))
 
   # Check if there are any names
-  if (is.null(df$name)) {
+  if (is.null(df$string)) {
     return("No names found.")
   }
 
   # Filter for A and B separately
   counts <- df |>
-    dplyr::filter(name %in% c("A", "B")) |>
-    dplyr::group_by(name) |>
+    dplyr::filter(string %in% c("A", "B")) |>
+    dplyr::group_by(string) |>
     dplyr::summarize(count = dplyr::n())
 
   # Check if counts for both A and B exist
@@ -40,10 +40,8 @@ cleaner <- function(pdb_location) {
     class <- ifelse(counts$count[1] >= counts$count[2], "A", "B")
 
     # Get the filtered sequence for the chosen class
-    filt_seq <- filtered[df$name == class]
-
-    # Return the class
-    return(class)
+    filt_seq <- filtered[df$string == class]
+    return(filt_seq)
   } else {
     # Handle case where counts are missing
     return("Unable to determine class: Counts for A and/or B are missing.")
