@@ -36,7 +36,6 @@ plot.protein5555_list <- function(x, y, kind = "aminoDis", ...) {
 }
 #' @importFrom stats family
 #' @import ggplot2
-#' @import ggplot2
 plot_seq <- function(x, ...) {
   my_palette <- c(
     "#ff5050", "#527dff", "#ffa852", "#ffd452", "#ffff52", "#d4ff52",
@@ -44,7 +43,6 @@ plot_seq <- function(x, ...) {
     "#52a8ff", "#ff7d52", "#7d52ff", "#d452ff", "#a852ff", "#ff52ff",
     "#ff52d4", "#ff52a8", "#ff5252"
   )
-
   if (is.list(x)) {
     fams <- unique_families(x)
     alldf <- data.frame()

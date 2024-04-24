@@ -30,7 +30,7 @@ get_full_count <- function(object, u_fam) {
   polar <- 0
   non_pol <- 0
   total <- 0
-  for (l in seq_len(object)) {
+  for (l in seq_along(object)) {
     prot <- prot + 1
     df <- classify(unlist(object[l]))
     pos <- pos + count_label_occurrences(df, "type", "positive")
