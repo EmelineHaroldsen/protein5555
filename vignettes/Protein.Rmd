@@ -42,13 +42,6 @@ The remaining three protein sequences (fpu, qgy, r7g) came from the KLIFS databa
 ## Load example datasets
 Below, we have loaded the RData files from this package and called a constructor to assign the `protein5555` class to each protein. Furthermore, called a constructor to assign the `protein5555_list` class to a list of each protein object. 
 ```{r}
-data("clean_bqr")
-data("clean_fpu")
-data("clean_huo")
-data("clean_qgy")
-data("clean_r7g")
-data("clean_sl0")
-
 a <- protein5555(bqr, "pol")
 b <- protein5555(fpu, "kin")
 d <- protein5555(huo, "pol")
@@ -57,13 +50,6 @@ f <- protein5555(r7g, "kin")
 g <- protein5555(sl0, "pol")
 
 kin_pol <- protein5555_list(list(a, b, d, e, f, g))
-```
-
-## Classifying proteins into families
-Below, we can check the class of the individual data as a `protein5555` or the list of the individual proteins as a list. 
-```{r}
-class(a)
-class(kin_pol)
 ```
 
 ## Summary statistics
@@ -77,7 +63,7 @@ summary(kin_pol)
 
 ## Plot amino acid proportions
 There are several plotting functions. Below, we show plotting the respective protein families, (polymerase and kinase) and the amino acid frequencies in each family. As an example, we also plot the amino acid frequencies of a single protein.
-```{r}
+```{r, warning=FALSE}
 plot(kin_pol)
 plot(a)
 ```
@@ -99,6 +85,11 @@ plot(kin_pol, kind = "length")
 
 # Using Data to Clean & Classify
 There are functions built into the `protein5555` package that allow for a pbd file to be entered and the longest protein string to be selected. There are typically two strings, labeled A or B, and the `cleaner` function will return which string was selected while storing the longer protein sequence. The classify sequence allows for the various 20 amino acids to be classified with polarity and the type of charge. 
+
+Since a dataframe is returned from the classify function, only the first 6 lines will be shown as an example. 
+```{r}
+head(classify(huo))
+```
 
 # Conclusion
 
