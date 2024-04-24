@@ -1,3 +1,5 @@
+# Just as a note, I used chatgpt quite a bit while writing most of my functions
+# (the plot and summary functions). I just want to give credit where it's due!
 #' Plot protein information
 #'
 #' Ability to plot
