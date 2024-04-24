@@ -59,9 +59,11 @@ plot_seq <- function(x, ...) {
       df$family <- c(f)
       alldf <- rbind(alldf, df)
     }
-    p <- ggplot2::ggplot(data = alldf, ggplot2::aes(x = AminoAcid,
-                                                    y = Frequency,
-                                                    fill = family)) +
+    p <- ggplot2::ggplot(data = alldf, ggplot2::aes(
+      x = AminoAcid,
+      y = Frequency,
+      fill = family
+    )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5, position = "dodge")
     p + ggplot2::scale_fill_manual(values = my_palette)
   } else {
@@ -189,7 +191,7 @@ plot_polar <- function(x, ...) {
       df$family <- c(f)
       alldf <- rbind(alldf, df)
     }
-    p <- ggplot2::ggplot(alldf,  ggplot2::aes(
+    p <- ggplot2::ggplot(alldf, ggplot2::aes(
       x = polarity,
       y = pol_freq, fill = family
     )) +
