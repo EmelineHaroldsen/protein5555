@@ -86,13 +86,12 @@ plot(kin_pol, kind = "length")
 # Using Data to Clean & Classify
 There are functions built into the `protein5555` package that allow for a pbd file to be entered and the longest protein string to be selected. There are typically two strings, labeled A or B, and the `cleaner` function will return which string was selected while storing the longer protein sequence. The classify sequence allows for the various 20 amino acids to be classified with polarity and the type of charge. 
 
-Since a dataframe is returned from the classify function, only the first 6 lines will be shown as an example. 
+Since a data frame is returned from the classify function, only the first 6 lines will be shown as an example. 
 ```{r}
 head(classify(huo))
 ```
 
 # Conclusion
+In conclusion, the `protein5555` package is beneficial for those looking to take complex protein structure data from PolBase and KLIFS (pdb file types) and gather insights about DNA polymerases and kinases.
 
-That wraps up our tour of the `protein5555` package! We've seen how it can turn complex protein structure data from PolBase and KLIFS into insights about DNA polymerases and kinases.
-
-From classifying proteins into families to comparing their structures and analyzing amino acid proportions, this package makes it easy to dive into protein structure-function relationships. And don't worry about those tricky PDB files - we've got you covered with filtering techniques and substring searches.
+This package is beneficial as it helps classify proteins into families to compare their structures and analyzing amino acid proportions. There are multiple plotting functions that allow for visualizations to be used to polarity and the charge of individual amino acids. 
