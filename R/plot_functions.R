@@ -183,8 +183,8 @@ plot_polar <- function(x, ...) {
       }
       polar <- polar / total
       nonpolar <- nonpolar / total
-      polarity <- c("polar", "nonpolar", "other")
-      pol_freq <- c(polar, nonpolar, other)
+      polarity <- c("polar", "nonpolar")
+      pol_freq <- c(polar, nonpolar)
       df <- data.frame(polarity = polarity, pol_freq = pol_freq)
       df$family <- c(f)
       alldf <- rbind(alldf, df)
@@ -201,8 +201,8 @@ plot_polar <- function(x, ...) {
     neg <- count_label_occurrences(df, "type", "negative")
     polar <- count_label_occurrences(df, "type", "polar")
     nonpolar <- count_label_occurrences(df, "type", "nonpolar")
-    count <- c(pos + neg + polar, nonpolar, other)
-    polarity <- c("polar", "nonpolar", "other")
+    count <- c(pos + neg + polar, nonpolar)
+    polarity <- c("polar", "nonpolar")
     new_df <- data.frame(polarity = polarity, count = count)
     p <- ggplot2::ggplot(
       new_df,
