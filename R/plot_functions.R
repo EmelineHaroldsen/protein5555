@@ -67,7 +67,7 @@ plot_seq <- function(x, ...) {
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5, position = "dodge")
     p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw() +
-      theme(text = element_text(size = 16))
+      theme(text = element_text(size = 13))
   } else {
     data <- as.data.frame(table(x))
     colnames(data) <- c("AminoAcid", "Count")
@@ -77,7 +77,7 @@ plot_seq <- function(x, ...) {
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5)
     p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw() +
-      ggplot2::theme(text = element_text(size = 16))
+      ggplot2::theme(text = element_text(size = 13))
   }
 }
 
