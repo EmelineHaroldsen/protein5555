@@ -66,7 +66,8 @@ plot_seq <- function(x, ...) {
       fill = family
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5, position = "dodge")
-    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw()
+    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw() +
+     theme(text = element_text(size = 16))
   } else {
     data <- as.data.frame(table(x))
     colnames(data) <- c("AminoAcid", "Count")
@@ -76,6 +77,7 @@ plot_seq <- function(x, ...) {
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5)
     p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw()
+    + theme(text = element_text(size = 16))
   }
 }
 
@@ -137,7 +139,8 @@ plot_charge <- function(x, ...) {
       y = charge_freq, fill = family
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5, position = "dodge")
-    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw()
+    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw() +
+      labs(y = "Charge Frequency") + theme(text = element_text(size = 16))
   } else {
     df <- classify(x)
     pos <- count_label_occurrences(df, "type", "positive")
@@ -151,7 +154,8 @@ plot_charge <- function(x, ...) {
       fill = charge
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5)
-    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw()
+    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw() +
+      labs(y = "Charge Frequency") + theme(text = element_text(size = 16))
   }
 }
 
@@ -194,7 +198,8 @@ plot_polar <- function(x, ...) {
       y = pol_freq, fill = family
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5, position = "dodge")
-    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw()
+    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw() +
+      labs(y = "Polarity Frequency") + theme(text = element_text(size = 16))
   } else {
     df <- classify(x)
     pos <- count_label_occurrences(df, "type", "positive")
@@ -209,7 +214,8 @@ plot_polar <- function(x, ...) {
       ggplot2::aes(x = polarity, y = count, fill = polarity)
     ) +
       ggplot2::geom_bar(stat = "identity", width = 0.5)
-    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw()
+    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw() +
+      labs(y = "Polarity Frequency") + theme(text = element_text(size = 16))
   }
 }
 #' @import ggplot2
@@ -235,7 +241,7 @@ plot_length <- function(x, ...) {
   }
   p <- ggplot2::ggplot(alldf, ggplot2::aes(x = seq_len, y = family)) +
     ggplot2::geom_boxplot()
-  p + ggplot2::theme_bw()
+  p + ggplot2::theme_bw() + theme(text = element_text(size = 16))
 }
 
 # https://www.w3schools.com/colors/colors_picker.asp
