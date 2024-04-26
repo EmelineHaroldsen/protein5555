@@ -34,6 +34,9 @@ plot.protein5555_list <- function(x, y, kind = "aminoDis", ...) {
     plot_length(x)
   }
 }
+
+globalVariables(c("AminoAcid", "Frequency", "Count"))
+
 #' @importFrom stats family
 #' @import ggplot2
 plot_seq <- function(x, ...) {
@@ -239,7 +242,6 @@ plot_length <- function(x, ...) {
   p #+ # ggplot2::scale_fill_manual(values=my_palette)
 }
 
-hello <- 0
 # https://www.w3schools.com/colors/colors_picker.asp
 # https://r-graph-gallery.com/42-colors-names.html
 # https://r-graph-gallery.com/ggplot2-color.html
