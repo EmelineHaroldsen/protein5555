@@ -25,8 +25,6 @@ classify <- function(data) {
       labels[i] <- "polar"
     } else if (aa %in% nonpolar) {
       labels[i] <- "nonpolar"
-    } else {
-      labels[i] <- "other"
     }
   }
 
