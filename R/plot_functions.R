@@ -66,7 +66,7 @@ plot_seq <- function(x, ...) {
       fill = family
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5, position = "dodge")
-    p + ggplot2::scale_fill_manual(values = my_palette)
+    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw()
   } else {
     data <- as.data.frame(table(x))
     colnames(data) <- c("AminoAcid", "Count")
