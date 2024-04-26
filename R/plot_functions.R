@@ -77,7 +77,7 @@ plot_seq <- function(x, ...) {
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5)
     p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw()
-    +theme(text = element_text(size = 16))
+    +ggplot2::theme(text = element_text(size = 16))
   }
 }
 
@@ -140,7 +140,8 @@ plot_charge <- function(x, ...) {
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5, position = "dodge")
     p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw() +
-      labs(y = "Charge Frequency") + theme(text = element_text(size = 16))
+      ggplot2::labs(y = "Charge Frequency") +
+      ggplot2::theme(text = element_text(size = 16))
   } else {
     df <- classify(x)
     pos <- count_label_occurrences(df, "type", "positive")
@@ -155,7 +156,8 @@ plot_charge <- function(x, ...) {
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5)
     p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw() +
-      labs(y = "Charge Frequency") + theme(text = element_text(size = 16))
+      ggplot2::labs(y = "Charge Frequency") +
+      ggplot2::theme(text = element_text(size = 16))
   }
 }
 
@@ -199,7 +201,8 @@ plot_polar <- function(x, ...) {
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5, position = "dodge")
     p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw() +
-      labs(y = "Polarity Frequency") + theme(text = element_text(size = 16))
+      ggplot2::labs(y = "Polarity Frequency") +
+      ggplot2::theme(text = element_text(size = 16))
   } else {
     df <- classify(x)
     pos <- count_label_occurrences(df, "type", "positive")
@@ -215,7 +218,8 @@ plot_polar <- function(x, ...) {
     ) +
       ggplot2::geom_bar(stat = "identity", width = 0.5)
     p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw() +
-      labs(y = "Polarity Frequency") + theme(text = element_text(size = 16))
+      ggplot2::labs(y = "Polarity Frequency") +
+      ggplot2::theme(text = element_text(size = 16))
   }
 }
 #' @import ggplot2
@@ -241,8 +245,8 @@ plot_length <- function(x, ...) {
   }
   p <- ggplot2::ggplot(alldf, ggplot2::aes(x = seq_len, y = family)) +
     ggplot2::geom_boxplot()
-  p + ggplot2::theme_bw() + theme(text = element_text(size = 16))
-  +labs(y = "Sequence Length")
+  p + ggplot2::theme_bw() + ggplot2::theme(text = element_text(size = 16))
+  +ggplot2::labs(y = "Sequence Length")
 }
 
 # https://www.w3schools.com/colors/colors_picker.asp
