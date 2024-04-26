@@ -76,8 +76,8 @@ plot_seq <- function(x, ...) {
       y = Count, fill = AminoAcid
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5)
-    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw()
-    +ggplot2::theme(text = element_text(size = 16))
+    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw() +
+      ggplot2::theme(text = element_text(size = 16))
   }
 }
 
@@ -245,8 +245,8 @@ plot_length <- function(x, ...) {
   }
   p <- ggplot2::ggplot(alldf, ggplot2::aes(x = seq_len, y = family)) +
     ggplot2::geom_boxplot()
-  p + ggplot2::theme_bw() + ggplot2::theme(text = element_text(size = 16))
-  +ggplot2::labs(y = "Sequence Length")
+  p + ggplot2::theme_bw() + ggplot2::theme(text = element_text(size = 16)) +
+    ggplot2::labs(y = "Sequence Length")
 }
 
 # https://www.w3schools.com/colors/colors_picker.asp
