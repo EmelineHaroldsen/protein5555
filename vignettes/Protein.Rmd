@@ -39,7 +39,7 @@ The `protein5555` package has 6 built-in datasets (bqr, fpu, huo, qgy, r7g, and 
 Three of the protein sequences (bqr, huo, sl0) came from the PolBase database and RSCB PDB and are representative of a fraction of polymerase sequences.
 The remaining three protein sequences (fpu, qgy, r7g) came from the KLIFS database and RSCB PDB and are representative of a fraction of kinase sequences.
 
-## Load example datasets
+## Load Example Datasets
 Below, we have loaded the RData files from this package and called a constructor to assign the `protein5555` class to each protein. Furthermore, called a constructor to assign the `protein5555_list` class to a list of each protein object. 
 ```{r}
 a <- protein5555(bqr, "pol")
@@ -52,7 +52,7 @@ g <- protein5555(sl0, "pol")
 kin_pol <- protein5555_list(list(a, b, d, e, f, g))
 ```
 
-## Summary statistics
+## Summary Statistics
 There is a built in summary statistic of the function that is compatible with the `protein5555_list` class.  
 If the summary is of an individual protein the summary function returns the family of the protein and some statistics about the proportion of amino acids of the protein sequence which are polar, nonpolar, charged, etc.
 If the summary is of protein list, it will return the families in the list, and some summary statistics about the proportion of amino acids (in the whole list) which are polar, nonpolar, charged, etc.
@@ -61,7 +61,7 @@ summary(a)
 summary(kin_pol)
 ```
 
-## Plot amino acid proportions
+## Plot Amino Acid Proportions
 There are several plotting functions. Below, we show plotting the respective protein families, (polymerase and kinase) and the amino acid frequencies in each family. As an example, we also plot the amino acid frequencies of a single protein.
 ```{r, warning=FALSE}
 plot(kin_pol)
@@ -77,13 +77,13 @@ plot(kin_pol, kind = "charge")
 ```
 
 
-## Compare sequence lengths between DNA polymerases and kinases
+## Compare Sequence Lengths Between DNA Polymerases and Kinases
 This plotting function, we see a boxplot of the total sequence lengths of each protein family.
 ```{r}
 plot(kin_pol, kind = "length")
 ```
 
-# Using Data to Clean & Classify
+# Using Data to Clean and Classify
 There are functions built into the `protein5555` package that allow for a pbd file to be entered and the longest protein string to be selected. There are typically two strings, labeled A or B, and the `cleaner` function will return which string was selected while storing the longer protein sequence. The classify sequence allows for the various 20 amino acids to be classified with polarity and the type of charge. 
 
 Since a data frame is returned from the classify function, only the first 6 lines will be shown as an example. 
