@@ -75,7 +75,7 @@ plot_seq <- function(x, ...) {
       y = Count, fill = AminoAcid
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5)
-    p + ggplot2::scale_fill_manual(values = my_palette)
+    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw()
   }
 }
 
@@ -137,7 +137,7 @@ plot_charge <- function(x, ...) {
       y = charge_freq, fill = family
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5, position = "dodge")
-    p + ggplot2::scale_fill_manual(values = my_palette)
+    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw()
   } else {
     df <- classify(x)
     pos <- count_label_occurrences(df, "type", "positive")
@@ -151,7 +151,7 @@ plot_charge <- function(x, ...) {
       fill = charge
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5)
-    p + ggplot2::scale_fill_manual(values = my_palette)
+    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw()
   }
 }
 
@@ -172,7 +172,6 @@ plot_polar <- function(x, ...) {
       loc <- which(sapply(x, function(y) f %in% attr(y, "family")))
       polar <- 0
       nonpolar <- 0
-      other <- 0
       total <- 0
       for (l in loc) {
         df <- classify(unlist(x[l]))
@@ -180,12 +179,10 @@ plot_polar <- function(x, ...) {
           count_label_occurrences(df, "type", "negative") +
           count_label_occurrences(df, "type", "positive")
         nonpolar <- nonpolar + count_label_occurrences(df, "type", "nonpolar")
-        other <- other + count_label_occurrences(df, "type", "other")
         total <- total + length(df$protein)
       }
       polar <- polar / total
       nonpolar <- nonpolar / total
-      other <- other / total
       polarity <- c("polar", "nonpolar", "other")
       pol_freq <- c(polar, nonpolar, other)
       df <- data.frame(polarity = polarity, pol_freq = pol_freq)
@@ -197,14 +194,13 @@ plot_polar <- function(x, ...) {
       y = pol_freq, fill = family
     )) +
       ggplot2::geom_bar(stat = "identity", width = 0.5, position = "dodge")
-    p + ggplot2::scale_fill_manual(values = my_palette)
+    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw()
   } else {
     df <- classify(x)
     pos <- count_label_occurrences(df, "type", "positive")
     neg <- count_label_occurrences(df, "type", "negative")
     polar <- count_label_occurrences(df, "type", "polar")
     nonpolar <- count_label_occurrences(df, "type", "nonpolar")
-    other <- count_label_occurrences(df, "type", "other")
     count <- c(pos + neg + polar, nonpolar, other)
     polarity <- c("polar", "nonpolar", "other")
     new_df <- data.frame(polarity = polarity, count = count)
@@ -213,7 +209,7 @@ plot_polar <- function(x, ...) {
       ggplot2::aes(x = polarity, y = count, fill = polarity)
     ) +
       ggplot2::geom_bar(stat = "identity", width = 0.5)
-    p + ggplot2::scale_fill_manual(values = my_palette)
+    p + ggplot2::scale_fill_manual(values = my_palette) + ggplot2::theme_bw()
   }
 }
 #' @import ggplot2
@@ -239,7 +235,7 @@ plot_length <- function(x, ...) {
   }
   p <- ggplot2::ggplot(alldf, ggplot2::aes(x = seq_len, y = family)) +
     ggplot2::geom_boxplot()
-  p #+ # ggplot2::scale_fill_manual(values=my_palette)
+  p + ggplot2::theme_bw()
 }
 
 # https://www.w3schools.com/colors/colors_picker.asp
