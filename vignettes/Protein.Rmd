@@ -92,6 +92,10 @@ head(classify(huo))
 ```
 
 # Conclusion
-In conclusion, the `protein5555` package is beneficial for those looking to take complex protein structure data from PolBase and KLIFS (pdb file types) and gather insights about DNA polymerases and kinases.
+In conclusion, the `protein5555` package proves invaluable to individuals seeking to navigate the intricacies of protein structure data sourced from PolBase and KLIFS databases, particularly in the PDB file format. This software facilitates the extraction of profound insights into the realm of DNA polymerases and kinases.
 
-This package is beneficial as it helps classify proteins into families to compare their structures and analyzing amino acid proportions. There are multiple plotting functions that allow for visualizations to be used to polarity and the charge of individual amino acids. 
+The utility of this package stems from its adeptness in classifying proteins into distinct families, enabling comprehensive comparisons of their structural attributes. Furthermore, it offers robust tools for scrutinizing amino acid proportions, thereby augmenting the depth of analysis. 
+
+Notably, the package boasts a repertoire of plotting functions tailored to illuminate the polarity and charge distribution of individual amino acids. These visualizations serve as indispensable aids in unraveling the intricate nuances of protein composition and behavior.
+
+In summation, the `protein5555` package stands as a commendable asset for researchers and enthusiasts alike, poised to illuminate the complexities inherent in protein structures and functionalities.
