@@ -10,6 +10,15 @@
 #' head(huo)
 "huo" <- load("data/clean_huo.RData")
 
+#' Raw version of the "huo" dataset
+#'
+#' This polymerase dataset contains the raw version of the "huo" dataset.
+#'
+#' @format A data frame the entire protein structure.
+#'
+#' @seealso \code{\link{huo1}}
+"huo1" <- load("data/raw_huo.RData")
+
 #' Cleaned version of the "fpu" dataset
 #'
 #' This kinase dataset contains the cleaned version of the "fpu" dataset.

@@ -4,15 +4,16 @@
 \alias{cleaner}
 \title{Cleans pdb file of proteins}
 \usage{
-cleaner(pdb_location)
+cleaner(pdb_input)
 }
 \arguments{
-\item{pdb_location}{Input location of pdb file on local device}
+\item{pdb_input}{Location of pdb file on local device or variable name of
+previously read in PDB file}
 }
 \value{
 returns string that is longer of A or B protein sequence
 }
 \description{
-This function takes a protein PDB file and locates the longest protein
-sequence for further analyzation.
+This function takes a protein PDB file or previously read in PDB file and
+locates the longest protein sequence for further analyzation.
 }

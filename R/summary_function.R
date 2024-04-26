@@ -8,8 +8,10 @@ summary.protein5555 <- function(object, ...) {
   nonpolar <- count_label_occurrences(df, "type", "nonpolar")
   count <- c(pos, neg, pos + neg, polar, nonpolar, len)
   freq <- round(count / len, 3)
-  feature <- c("positive", "negative", "total_charge",
-               "polar", "nonpolar", "length")
+  feature <- c(
+    "positive", "negative", "total_charge",
+    "polar", "nonpolar", "length"
+  )
   new_df <- data.frame(feature = feature, count = count, frequency = freq)
   print(paste("Family:", attr(object, "family")))
   print(new_df)
@@ -36,7 +38,7 @@ get_full_count <- function(object, u_fam) {
     pos <- pos + count_label_occurrences(df, "type", "positive")
     neg <- neg + count_label_occurrences(df, "type", "negative")
     polar <- polar + count_label_occurrences(df, "type", "polar")
-    + count_label_occurrences(df, "type", "negative") +
+    +count_label_occurrences(df, "type", "negative") +
       count_label_occurrences(df, "type", "positive")
     non_pol <- non_pol + count_label_occurrences(df, "type", "nonpolar")
     total <- total + length(df$protein)
@@ -44,8 +46,10 @@ get_full_count <- function(object, u_fam) {
 
   count <- c(pos, neg, pos + neg, polar, non_pol, total)
   freq <- round(count / total, 3)
-  feature <- c("positive", "negative", "total_charge",
-               "polar", "nonpolar", "length")
+  feature <- c(
+    "positive", "negative", "total_charge",
+    "polar", "nonpolar", "length"
+  )
   all_df <- data.frame(feature = feature, count = count, frequency = freq)
   print(all_df)
 }

@@ -1,14 +1,23 @@
 #' Cleans pdb file of proteins
 #'
-#' This function takes a protein PDB file and locates the longest protein
-#'    sequence for further analyzation.
+#' This function takes a protein PDB file or previously read in PDB file and
+#'    locates the longest protein sequence for further analyzation.
 #'
-#' @param pdb_location Input location of pdb file on local device
+#' @param pdb_input Location of pdb file on local device or variable name of
+#'     previously read in PDB file
 #' @return returns string that is longer of A or B protein sequence
 #' @export
-cleaner <- function(pdb_location) {
-  # Read the PDB file
-  file <- bio3d::read.pdb(pdb_location)
+cleaner <- function(pdb_input) {
+  # Check if pdb_input is a file path or a PDB object
+  if (is.character(pdb_input)) {
+    # Read the PDB file
+    file <- bio3d::read.pdb(pdb_input)
+  } else if (inherits(pdb_input, "pdb")) {
+    # If pdb_input is already a PDB object, assign it directly
+    file <- pdb_input
+  } else {
+    stop("Input must be either a file path to a PDB file or a PDB object.")
+  }
 
   # Extract sequence
   seq <- file$seqres
@@ -33,7 +42,6 @@ cleaner <- function(pdb_location) {
     dplyr::filter(.data$pro_seq %in% c("A", "B")) |>
     dplyr::group_by(.data$pro_seq) |>
     dplyr::summarize(count = dplyr::n())
-
 
   # Check if counts for both A and B exist
   if (nrow(counts) == 2) {

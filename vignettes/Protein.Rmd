@@ -15,14 +15,15 @@ knitr::opts_chunk$set(
 ```
 
 # Introduction
-Our analysis delves into the rich structural data sourced from esteemed repositories like PolBase and KLIFS databases, with a targeted focus on DNA polymerases and kinases. These proteins play pivotal roles in fundamental biological processes, orchestrating DNA replication and signaling cascades critical for cellular function and regulation. Understanding their structural intricacies is paramount for unraveling their physiological significance and potential therapeutic applications.
+The motivation behind this package was to create a way to visualize and interpret various protein structures. The current way to visualize the makeup of a protein sequence was difficult as it is time intensive to clean up the original file. Typically in a PDB file, there are various water molecules, nucleic acids and bound molecules such as sugars or inhibitors. Using `protein5555`, a simple way has been implemented to input a PDB file and return the longest protein string to visualize and analyze. The function can quickly identify the protein sequence and filter out the unnecessary data. 
 
-Parsing the wealth of information encapsulated within complex PDB files presents formidable challenges. The intricate nature of these files demands sophisticated filtering techniques and substring searches to extract relevant data effectively. Our endeavor is to surmount these challenges by offering a comprehensive R package that not only facilitates the extraction and manipulation of structural data but also empowers users to glean actionable insights from their analyses.
+Protein strings are made up of 20 different amino acids with varying length. A function has been written to help classify each of these amino acids into meaningful categories such as polarity and the type of charge. Polarity is an important analytical tool, as it determines if the amino acid is hydrophobic or hydrophilic, which then determines the protein size and type of bonds. The type of charge, either positive or negative, can determine protein stability or the protein bonds. 
 
-At the core of our package is a suite of functionalities aimed at simplifying data cleaning and analysis. Leveraging the powerful capabilities of Tidyverse functions, users can efficiently organize and prepare data for thorough exploration. With a dedicated protein class, our package enables effortless protein classification, facilitating comparative analyses and structural understanding. Importantly, beyond mere data manipulation, our package serves as a tool to unravel the intricate relationships between protein structure and function. Through visualizations like amino acid proportions and sequence length analyses, users gain insights into fundamental principles of protein biology, empowering them to navigate this complex field with confidence. Ultimately, our package provides a compelling opportunity to delve into the captivating realm of protein biology, fostering scientific curiosity and driving advancements in biomedical research and beyond.
+Various plotting functions were implemented in this package to visualize the amount of amino acids in each category from the classify function. There is an option to compare between protein families, such as kinase and polymerase and view the difference in each of these protein sequences. This package offers a great introduction into the protein sequence makeup. 
 
 # Installation
-The `protein555` package has package dependencies on `bio3d`, `devtools` and `ggplot2`. These should be installed if not downloaded prior. To use the `protein5555` package, you'll need to install it from GitHub using the `devtools` package. This can be done by following this link to the GitHub repository: https://github.com/EmelineHaroldsen/protein5555.git
+The `protein555` package has package dependencies on `bio3d`, `RColorBrewer`, 
+`dplyr` and `ggplot2`. These should be installed if not downloaded prior. To use the `protein5555` package, you'll need to install it from GitHub using the `devtools` package. This can be done by following this link to the GitHub repository: https://github.com/EmelineHaroldsen/protein5555.git
 
 Once installed, you can load the protein5555 package in your R session using the following command:
 
@@ -36,9 +37,7 @@ In this section, we'll demonstrate how to use the `protein5555` package to analy
 
 ## Description of Datasets
 
-The `protein5555` package has 6 built-in datasets (bqr, fpu, huo, qgy, r7g, and sl0). Each dataset contains a protein sequence.
-Three of the protein sequences (bqr, huo, sl0) came from the PolBase database and RSCB PDB and are representative of a fraction of polymerase sequences.
-The remaining three protein sequences (fpu, qgy, r7g) came from the KLIFS database and RSCB PDB and are representative of a fraction of kinase sequences.
+The `protein5555` package has 6 built-in datasets (`bqr`, `fpu`, `huo`, `qgy`, `r7g`, and `sl0`). Each dataset contains a protein sequence. We used PolBase to identify various polymerase protein sequences and then viewed and downloaded the respective PDB files on RSCB PDB. The three polymerase datasets are `bqr`, `huo` and `sl0`. The other three sequences, `fpu`, `qgy` and `r7g` came from the KLIFS database. KLIFS was a resource to identify kinase protein structures and were also downloaded from RSCB PDB.  
 
 Links to the database sources are included below:
 
@@ -49,6 +48,7 @@ PolBase: https://polbase.neb.com/
 KLIFS: https://klifs.net/
 
 ## Load Example Datasets
+
 Below, we have loaded the RData files from this package and called a constructor to assign the `protein5555` class to each protein. Furthermore, called a constructor to assign the `protein5555_list` class to a list of each protein object. 
 ```{r}
 a <- protein5555(bqr, "pol")
@@ -93,18 +93,18 @@ plot(kin_pol, kind = "length")
 ```
 
 # Using Data to Clean and Classify
-There are functions built into the `protein5555` package that allow for a pbd file to be entered and the longest protein string to be selected. There are typically two strings, labeled A or B, and the `cleaner` function will return which string was selected while storing the longer protein sequence. The classify sequence allows for the various 20 amino acids to be classified with polarity and the type of charge. 
+There are functions built into the `protein5555` package that allow for a PDB file to be entered (or a variable assigned to a previously read in PDB file) and the longest protein string to be selected. There are typically two strings, labeled A or B, and the `cleaner` function will return which string was selected while storing the longer protein sequence. The classify sequence allows for the various 20 amino acids to be classified with polarity and the type of charge. 
 
-Since a data frame is returned from the classify function, only the first 6 lines will be shown as an example. 
+The `cleaner` function returns a character vector of the longest string. For the example below, `huo1` is used as the input, which is a previously read in PDB file under this variable name and contains raw data. The example below shows that string A was the longer string and returns the individual amino acids from that string. 
+
+The` classify` function will return a data frame, so the head function will be implemented to show a small example. This should return the individual amino acids with their respective labels such as "polar", "nonpolar", "positive" or "negative".
 ```{r}
+head(cleaner(huo1))
 head(classify(huo))
 ```
 
 # Conclusion
-In conclusion, the `protein5555` package proves invaluable to individuals seeking to navigate the intricacies of protein structure data sourced from PolBase and KLIFS databases, particularly in the PDB file format. This software facilitates the extraction of profound insights into the realm of DNA polymerases and kinases.
+In conclusion, the `protein5555` package benefits individuals seeking to navigate the intricacies of protein structure data sourced from PolBase and KLIFS databases in the PDB file format. 
 
-The utility of this package stems from its adeptness in classifying proteins into distinct families, enabling comprehensive comparisons of their structural attributes. Furthermore, it offers robust tools for scrutinizing amino acid proportions, thereby augmenting the depth of analysis. 
+The utility of this package stems from its adeptness in classifying proteins into distinct families, enabling comprehensive comparisons of their structural attributes. Furthermore, it offers robust tools for scrutinizing amino acid proportions, thereby augmenting the depth of analysis. The package plotting functions tailored to illuminate the polarity and charge distribution of individual amino acids are great visual aids in investigating protein composition and behavior.
 
-Notably, the package boasts a repertoire of plotting functions tailored to illuminate the polarity and charge distribution of individual amino acids. These visualizations serve as indispensable aids in unraveling the intricate nuances of protein composition and behavior.
-
-In summation, the `protein5555` package stands as a commendable asset for researchers and enthusiasts alike, poised to illuminate the complexities inherent in protein structures and functionalities.
