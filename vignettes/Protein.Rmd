@@ -45,6 +45,14 @@ The `protein5555` package has 6 built-in datasets (bqr, fpu, huo, qgy, r7g, and 
 Three of the protein sequences (bqr, huo, sl0) came from the PolBase database and RSCB PDB and are representative of a fraction of polymerase sequences.
 The remaining three protein sequences (fpu, qgy, r7g) came from the KLIFS database and RSCB PDB and are representative of a fraction of kinase sequences.
 
+Links to the database sources are included below:
+
+RSCB PDB: https://www.rcsb.org/
+
+PolBase: https://polbase.neb.com/
+
+KLIFS: https://klifs.net/
+
 ## Load Example Datasets
 Below, we have loaded the RData files from this package and called a constructor to assign the `protein5555` class to each protein. Furthermore, called a constructor to assign the `protein5555_list` class to a list of each protein object. 
 ```{r}
