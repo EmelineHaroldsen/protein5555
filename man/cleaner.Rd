@@ -13,5 +13,6 @@ cleaner(pdb_location)
 returns string that is longer of A or B protein sequence
 }
 \description{
-Requires the location of pdb file to be known for file to run
+This function takes a protein PDB file and locates the longest protein
+sequence for further analyzation.
 }
