@@ -69,14 +69,14 @@ summary(kin_pol)
 
 ## Plot Amino Acid Proportions
 There are several plotting functions. Below, we show plotting the respective protein families, (polymerase and kinase) and the amino acid frequencies in each family. As an example, we also plot the amino acid frequencies of a single protein.
-```{r, warning=FALSE}
+```{r, warning=FALSE, fig.width=8, fig.height=6}
 plot(kin_pol)
 plot(a)
 ```
 
 ## Plot by Charge or Polarity
 The charge and polarity plots that allow you to compare the percentage of amino acids within protein families that are charged or polar.
-```{r}
+```{r, fig.width=8, fig.height=6}
 plot(kin_pol, kind = "polar")
 
 plot(kin_pol, kind = "charge")
@@ -85,7 +85,7 @@ plot(kin_pol, kind = "charge")
 
 ## Compare Sequence Lengths Between DNA Polymerases and Kinases
 This plotting function, we see a boxplot of the total sequence lengths of each protein family.
-```{r}
+```{r, fig.width=8, fig.height=6}
 plot(kin_pol, kind = "length")
 ```
 
