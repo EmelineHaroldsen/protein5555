@@ -22,7 +22,7 @@ Protein strings are made up of 20 different amino acids with varying length. A f
 Various plotting functions were implemented in this package to visualize the amount of amino acids in each category from the classify function. There is an option to compare between protein families, such as kinase and polymerase and view the difference in each of these protein sequences. This package offers a great introduction into the protein sequence makeup. 
 
 # Installation
-The `protein555` package has package dependencies on `bio3d`, `RColorBrewer`, 
+The `protein5555` package has package dependencies on `bio3d`, `RColorBrewer`, 
 `dplyr` and `ggplot2`. These should be installed if not downloaded prior. To use the `protein5555` package, you'll need to install it from GitHub using the `devtools` package. This can be done by following this link to the GitHub repository: https://github.com/EmelineHaroldsen/protein5555.git
 
 Once installed, you can load the protein5555 package in your R session using the following command:
@@ -112,7 +112,7 @@ There are functions built into the `protein5555` package that allow for a PDB fi
 
 The `cleaner` function returns a character vector of the longest string. For the example below, `huo1` is used as the input, which is a previously read in PDB file under this variable name and contains raw data. The example below shows that string A was the longer string and returns the individual amino acids from that string. 
 
-The` classify` function will return a data frame, so the head function will be implemented to show a small example. This should return the individual amino acids with their respective labels such as "polar", "nonpolar", "positive" or "negative".
+The `classify` function will return a data frame, so the head function will be implemented to show a small example. This should return the individual amino acids with their respective labels such as "polar", "nonpolar", "positive" or "negative".
 ```{r}
 head(cleaner(huo1))
 head(classify(huo))
