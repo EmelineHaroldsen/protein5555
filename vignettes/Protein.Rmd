@@ -37,7 +37,9 @@ In this section, we'll demonstrate how to use the `protein5555` package to analy
 
 ## Description of Datasets
 
-The `protein5555` package has 6 built-in datasets (`bqr`, `fpu`, `huo`, `qgy`, `r7g`, and `sl0`). Each dataset contains a protein sequence. We used PolBase to identify various polymerase protein sequences and then viewed and downloaded the respective PDB files on RSCB PDB. The three polymerase datasets are `bqr`, `huo` and `sl0`. The other three sequences, `fpu`, `qgy` and `r7g` came from the KLIFS database. KLIFS was a resource to identify kinase protein structures and were also downloaded from RSCB PDB.  
+The `protein5555` package has 6 built-in datasets (`bqr`, `fpu`, `huo`, `qgy`, `r7g`, and `sl0`). Each dataset contains a protein sequence. We used PolBase to identify various polymerase protein sequences and then viewed and downloaded the respective PDB files on RSCB PDB. Polymerases are a type of protein that synthesize nucleic acid (for example: DNA Pol 1 in bacteria is responsible for nick translation and DNA Pol 3 in bacteria does the bulk of the work necessary for replcating the bacterial genome). Furthermore, polymerases often have some kind of proofreading activity. The three polymerase datasets are `bqr`, `huo` and `sl0`. 
+
+The other three sequences, `fpu`, `qgy` and `r7g` came from the KLIFS database. KLIFS was a resource to identify kinase protein structures and were also downloaded from RSCB PDB. Kinases are a type of protein that adds phosphoryl groups to Thr, Tyr, or Ser residues on other proteins (or sometimes itself). These modifications have major implications in cellular signalling pathways. (For example, the rhodoposin kinase modifies the protein rhodoposin, after it's retinol has absorbed light. Rhodoposin is a key protein for sight. Phosophorylated rhodoposin is inactive, and no longer able to transmit signals further down the signalling cascade. The activity of rhodoposin kinase is important for preventing sudden intense beams of light (such as from the headlights of a car driving by) from blinding us.)
 
 Links to the database sources are included below:
 
@@ -72,6 +74,9 @@ summary(kin_pol)
 
 ## Plot Amino Acid Proportions
 There are several plotting functions. Below, we show plotting the respective protein families, (polymerase and kinase) and the amino acid frequencies in each family. As an example, we also plot the amino acid frequencies of a single protein.
+
+Comparing the amino acid frequencies between the kinase and polymerase families allows us to generate hypotheses about what properties are important for each families respective protein functioning. For example, in the below plot it is seen that kinases have more Tyr, Thr, and Ser residues then polymerases, which is interesting, because these are the residues that kinases modify. This allows us to hypothesis that kinase regulation may often involve phosphorlyation, particularly self-phosphorylation, while polymerase activity may be not regulated as often by kinase activity.
+It's also worthwhile interesting to note from both the family plot and the individual protein plot, kinases and polymerases do not have many cysteines (although kinases are appear to have more cysteines then polymerases). This isn't too shocking, as cysteines are highly susceptible to oxidative damage and are often rare in protein sequences.
 ```{r, warning=FALSE, fig.width=8, fig.height=6}
 plot(kin_pol)
 plot(a)
@@ -79,15 +84,25 @@ plot(a)
 
 ## Plot by Charge or Polarity
 The charge and polarity plots that allow you to compare the percentage of amino acids within protein families that are charged or polar.
-```{r, fig.width=8, fig.height=6}
-plot(kin_pol, kind = "polar")
 
+For example, below we compare the frequency of amino acids that are charged in kinases and polymerases, as well as the frequency of amino acids that are polar/nonpolar.
+
+The polymerase dataset has more positively charged residues than kinase dataset - which is explained because polymerases must be able to bind to a negatively charged nucleic acid backbone. However, the polymerase dataset also have more NEGATIVELY charged residues then the kinase dataset. At first, this seems surprising, since negatively charged residues (depending on their placement), would repulse the nucleic acid backbone. However, polymerases must coordinate magnesium, which is a positively charged metal ion, in order to be active. The higher frequency of negative residues in polymerases may reflect the residues that polymerases use in order for magnesium coordination.
+
+Interestingly, although polymerases tend to have more charged residues then kinases, kinases and polymerases have very similar frequencies of polar and nonpolar residues. This may indicate more about properties that required for proper protein folding than about either family specifically. In other words, proper protein folding requires nonpolar and polar residues. It's possible that proper protein folding requires a particular proporition of nonpolar and polar residues, but assessing this would require looking at many more protein families.
+```{r, fig.width=8, fig.height=6}
 plot(kin_pol, kind = "charge")
+
+plot(kin_pol, kind = "polar")
 ```
 
 
 ## Compare Sequence Lengths Between DNA Polymerases and Kinases
-This plotting function, we see a boxplot of the total sequence lengths of each protein family.
+With the kind argument set to "length", we can visualize a boxplot of the total sequence lengths of each protein family.
+
+Although as a whole, size is not terribly informative protein feature, there may still be some information which can be glean from plotting and comparing protein family sizes.
+
+In particular, larger proteins may be easier to regulate via modification, or other protein binding (since if the protein is larger, it will have more space for proteins to dock on it). In the below example plot, we see that kinases have a greater variance in sequence length then polymerases, and the median of polymerase sequence length is greater than kinase length. This could be a result of the above the hypothesis, indicating that polymerases are generally more highly regulated then kinases.
 ```{r, fig.width=8, fig.height=6}
 plot(kin_pol, kind = "length")
 ```
