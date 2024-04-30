@@ -15,9 +15,13 @@ knitr::opts_chunk$set(
 ```
 
 # Introduction
-The motivation behind this package was to create a way to visualize and analyze various protein structures, and compare protein structure families. The current way to visualize the makeup of a protein sequence was difficult as it is time intensive to clean up the original file. Typically in a PDB file, there are various water molecules, nucleic acids and bound molecules such as sugars or inhibitors. Using `protein5555`, a simple way has been implemented to input a PDB file and return the longest protein string to visualize and analyze. The function can quickly identify the protein sequence and filter out the unnecessary data. 
+The motivation behind this package was to create a way to visualize and analyze various protein structures, and compare protein structure families.
 
-Protein strings are made up of 20 different amino acids with varying length. A function has been written to help classify each of these amino acids into meaningful categories such as polarity and the type of charge. Polarity (nonpolar or polar) and charge (positive or negative) are important amino acid features because they determine the interactions and bonds proteins can form (which can impact protein activity and regulation) and are these features are often critical for protein folding and structure.
+Proteins and protein structure is at the heart of biochemistry and often times, critical for understanding and treating diseases. Providing tools to help scientists better study protein structure is critical to push scientific advancements forward.  
+
+The current way to visualize the makeup of a protein sequence is difficult as it is time intensive to clean up the original file. Typically in a PDB file, there are various water molecules, nucleic acids and bound molecules such as sugars or inhibitors. Using `protein5555`, a simple way has been implemented to input a PDB file and return the longest protein string to visualize and analyze. The function can quickly identify the protein sequence and filter out the unnecessary data. 
+
+Protein are made up of a string of amino acids, which may be any length. There are 20 common amino acids. A function has been written to help classify each of these amino acids into meaningful categories such as polarity and the type of charge. Polarity (nonpolar or polar) and charge (positive or negative) are important amino acid features because they determine the interactions and bonds proteins can form (which can impact protein activity and regulation) and are these features are often critical for protein folding and structure.
 
 Various plotting functions were implemented in this package to visualize the frequency of amino acids in each category from the classify function. There is an option to compare between protein families, (such as kinases and polymerases) and view the difference in the frequency of amino acids within the families. This package offers a great introduction into the protein sequence makeup, may aide researchers in generating initial hypotheses regarding protein features necessary for functionality, and comparison across protein families. 
 
